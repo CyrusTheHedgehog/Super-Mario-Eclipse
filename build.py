@@ -151,7 +151,7 @@ class FilePatcher(Compiler):
         return isoPath
 
     def _patch_dol(self) -> bool:
-        from pyiiasmh import pyiiasmh_cli
+        from tools.pyiiasmh import pyiiasmh_cli
         dolPath = self.solutionDir / "system/main.dol"
         kernelPath = self.solutionDir / "kuribo/KuriboKernel.bin"
 
@@ -258,6 +258,8 @@ class FilePatcher(Compiler):
                 else:
                     destPath.write_bytes(f.read_bytes())
             else:
+                print(destPath)
+                print(f)
                 destPath.write_bytes(f.read_bytes())
             
             print(f"{relativePath} -> {destPath}")

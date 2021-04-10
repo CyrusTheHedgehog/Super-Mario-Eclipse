@@ -35,8 +35,8 @@ from argparse import ArgumentParser, Namespace
 from pathlib import Path
 from typing import Any, List, Optional, Tuple, Union
 
-from pyiiasmh.errors import UnsupportedOSError
-from pyiiasmh.ppctools import PpcFormatter
+from tools.pyiiasmh.errors import UnsupportedOSError
+from tools.pyiiasmh.ppctools import PpcFormatter
 
 
 class PyiiAsmhApp(PpcFormatter):

@@ -8,7 +8,6 @@ from io import BytesIO
 from pathlib import Path
 from typing import List, Optional, Union
 
-import pykamek
 from dolreader.dol import DolFile, write_uint32
 
 TMPDIR = Path("tmp-compiler")
@@ -412,6 +411,7 @@ class Compiler(object):
         write_uint32(dol, 0x60630000 | ((self.startaddr + size) & 0xFFFF))
 
     def _init_compilers(self, path: Path):
+        print(Path)
         for f in path.iterdir():
             if f.is_file() and f.suffix == ".exe":
                 self._compilers[f.stem] = f

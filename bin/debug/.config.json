@@ -3,8 +3,8 @@
     "dolphinpath": "C:/Users/Kyler-Josh/3D Objects/Dolphin/Dolphin-x64/Dolphin.exe",
     "userfiles": [
         {
-            "system/*.*": {
-                "destination": "sys/",
+            "system/main.dol": {
+                "destination": "sys/main.dol",
                 "rename": ""
             }
         },
