@@ -404,11 +404,11 @@ class Compiler(object):
 
     def _alloc_from_heap(self, dol: DolFile, size: int):
         size = (size + 31) & -32
-        dol.seek(0x80341E74)
+        dol.seek(0x80339ff4)
         write_uint32(dol, 0x3C600000 | (((self.startaddr + size) >> 16) & 0xFFFF))
         write_uint32(dol, 0x60630000 | ((self.startaddr + size) & 0xFFFF))
 
-        dol.seek(0x80341EAC)
+        dol.seek(0x8033a02c)
         write_uint32(dol, 0x3C600000 | (((self.startaddr + size) >> 16) & 0xFFFF))
         write_uint32(dol, 0x60630000 | ((self.startaddr + size) & 0xFFFF))
 

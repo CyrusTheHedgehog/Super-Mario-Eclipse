@@ -60,7 +60,7 @@ class FilePatcher(Compiler):
 
         self._init_tables()
 
-        super().__init__(Path("compiler"),
+        super().__init__(Path("src/compiler"),
                          self._get_matching_filepath(
                              self.solutionDir / "main.dol"),
                          Path(f"linker/{self.region}.map"),
@@ -165,7 +165,6 @@ class FilePatcher(Compiler):
         return isoPath
 
     def _patch_dol(self) -> bool:
-        from tools.pyiiasmh import pyiiasmh_cli
         dolPath = self.solutionDir / "system/main.dol"
         kernelPath = self.solutionDir / "kuribo/KuriboKernel.bin"
 
@@ -184,7 +183,7 @@ class FilePatcher(Compiler):
 
             modules = self.run(Path("src/src-code"), dolPath)
             _doldata = DolFile(BytesIO(self.dest.read_bytes()))
-
+            
             if isinstance(modules, list):
                 size = 0
                 for m in modules:
@@ -212,7 +211,7 @@ class FilePatcher(Compiler):
             elif isinstance(modules, Path):
                 renamed = self._get_translated_filepath(
                     modules.name).with_name("SME")
-                if renamed.exists:
+                if renamed.exists():
                     renamed.unlink()
                 modules.rename(renamed)
                 self._alloc_from_heap(
