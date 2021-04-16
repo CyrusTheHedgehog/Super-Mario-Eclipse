@@ -8,7 +8,7 @@ from io import BytesIO
 from pathlib import Path
 from typing import List, Optional, Union
 
-from dolreader.dol import DolFile, write_uint32
+# import pykamek
 
 TMPDIR = Path("tmp-compiler")
 
@@ -46,13 +46,13 @@ class Compiler(object):
                  startaddr: int = 0x80000000):
         if isinstance(compilerPath, str):
             compilerPath = Path(compilerPath)
-        
+
         self.dest = Path(dest) if isinstance(dest, str) else dest
         self.linker = Path(linker) if isinstance(linker, str) else linker
 
         if self.linker and not self.linker.exists():
             raise FileNotFoundError(f"Linker map could not be found :: {self.linker}")
-            
+
         self.dump = dump
         self.startaddr = startaddr
 
@@ -258,16 +258,9 @@ class Compiler(object):
             print("")
 
             args = [*objects.split(" "), "--static", f"0x{self.startaddr:08X}", *cmdtype]
-            pykamek.main(args)
+            # pykamek.main(args)
 
-            if dol is not None:
-                _doldata = DolFile(BytesIO(self.dest.read_bytes()))
-                
-                self.alloc_from_heap(_doldata, tmpDumpCode.stat().st_size + 0x8000)
-                with self.dest.open("wb") as dest:
-                    _doldata.save(dest)
-
-            return None
+            return tmpDumpCode
         elif self.is_clang():
             _clangCpp: Path = self._compilers["clang"]
 
@@ -284,7 +277,7 @@ class Compiler(object):
 
             tmpfile = TMPDIR / f"tmp.o"
 
-            if src.is_file(): 
+            if src.is_file():
                 if src.suffix in (".cpp", ".cxx", ".c++"):
                     subprocess.run([str(_clangCpp.resolve()), str(src.resolve()), *self._includes, *self._defines, *self.cxxOptions, "-o", str(tmpfile)],
                                     text=True)
@@ -352,7 +345,7 @@ class Compiler(object):
 
             tmpfile = TMPDIR / f"tmp.o"
 
-            if src.is_file(): 
+            if src.is_file():
                 if src.suffix in (".cpp", ".cxx", ".c++"):
                     subprocess.run([str(_gccCpp.resolve()), str(src.resolve()), *self._includes, *self._defines, *self.cxxOptions, "-o", str(TMPDIR / f"tmp.o")],
                                     text=True)
@@ -394,23 +387,13 @@ class Compiler(object):
 
                 subprocess.run([str(_gccCpp.resolve()), *linkObjects, *self._includes, *self._defines, *self.linkOptions, "-o", str(TMPDIR / f"tmp.o")],
                                 text=True)
-                
+
 
             kxefile = tmpfile.with_suffix(".kxe")
             subprocess.run(f'tools/KuriboConverter/KuriboConverter.exe "{tmpfile}" "{kxefile}" "{self.linker.resolve()}"',
                            text=True)
 
             return kxefile
-
-    def _alloc_from_heap(self, dol: DolFile, size: int):
-        size = (size + 31) & -32
-        dol.seek(0x80339ff4)
-        write_uint32(dol, 0x3C600000 | (((self.startaddr + size) >> 16) & 0xFFFF))
-        write_uint32(dol, 0x60630000 | ((self.startaddr + size) & 0xFFFF))
-
-        dol.seek(0x8033a02c)
-        write_uint32(dol, 0x3C600000 | (((self.startaddr + size) >> 16) & 0xFFFF))
-        write_uint32(dol, 0x60630000 | ((self.startaddr + size) & 0xFFFF))
 
     def _init_compilers(self, path: Path):
         print(Path)
