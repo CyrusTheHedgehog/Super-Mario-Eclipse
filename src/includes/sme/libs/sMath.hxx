@@ -1,4 +1,5 @@
 #include "math.h"
+#include "MTX.h"
 
 #pragma once
 
@@ -45,7 +46,9 @@ template <typename T> T getNormalAngle(const JGeometry::TVec3<T> &);
 template <typename T>
 JGeometry::TVec3<T> unitVector(const JGeometry::TVec3<T> &);
 template <typename T>
-JGeometry::TVec3<T> normalized(const JGeometry::TVec3<T> &);
+JGeometry::TVec3<T> normalized(const JGeometry::TVec3<T> & other){
+  PSVECNormalize(other,other);
+}
 
 } // namespace Vector
 

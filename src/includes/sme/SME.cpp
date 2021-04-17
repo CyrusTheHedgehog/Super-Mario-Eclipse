@@ -5,6 +5,8 @@
 #include "sms/actor/Mario.hxx"
 #include "macros.h"
 
+#include "sme/libs/sSecurity.hxx"
+
 // mario.cpp
 extern "C" s16 mario_shadowCrashPatch();
 

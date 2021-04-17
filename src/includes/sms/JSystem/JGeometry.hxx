@@ -27,7 +27,11 @@ namespace JGeometry
         template <typename TY>
         TVec3(TY, TY, TY);
         
-        TVec3 &operator =(const TVec3 &);
+        TVec3 &operator =(const TVec3 & other){
+            this->x = other.x;
+            this->y = other.y;
+            this->z = other.z;
+        };
         TVec3 &operator *=(const TVec3 &);
         TVec3 &operator -=(const TVec3 &);
         
