@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include "types.h"
 #include "sms/JSystem/JGeometry.hxx"
+#include "types.h"
 
 namespace SME::Util::Math {
 
@@ -41,14 +41,9 @@ template <typename T> constexpr inline T lerp(T a, T b, f32 f) {
 namespace Vector {
 
 template <typename T> T magnitude(const JGeometry::TVec3<T> &);
-template <typename T> T resultant(const JGeometry::TVec3<T> &);
 template <typename T> T getNormalAngle(const JGeometry::TVec3<T> &);
 template <typename T>
-JGeometry::TVec3<T> unitVector(const JGeometry::TVec3<T> &);
-template <typename T>
-JGeometry::TVec3<T> normalized(const JGeometry::TVec3<T> & other){
-  PSVECNormalize(other,other);
-}
+JGeometry::TVec3<T> normalized(const JGeometry::TVec3<T> &);
 
 } // namespace Vector
 
