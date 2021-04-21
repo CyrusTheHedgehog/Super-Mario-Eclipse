@@ -1,7 +1,7 @@
 import re
 
 
-f1 = open("pal.map", "w")
+f1 = open("funcs.hxx", "w")
 
 pattern = re.compile(r"\b[0-9A-F]+\b \b[0-9A-F]+\b \b[0-9A-F]+\b", re.I | re.S | re.M)
 with open('marioEU.MAP', 'r') as f:
@@ -10,7 +10,7 @@ with open('marioEU.MAP', 'r') as f:
         if x:
             try:
                 if line.split()[4][0] != "." and line.split()[4][0] != "@" and line.split()[4][0] != "(": 
-                    output = line.split()[4]+"=0x"+line.split()[2]+"\n"
+                    output = "#define "+line.split()[4]+" ((int(*)(...))0x"+line.split()[2]+")\n"
                     f1.write(output)
             except:
                 pass

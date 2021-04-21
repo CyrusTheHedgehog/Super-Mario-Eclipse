@@ -101,8 +101,8 @@ class AllocationMap(object):
 _ALLOC_INFO = AllocationMap({
     Region.US: (AllocationMap.AllocationPacket(0x80341E74, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]),
                 (AllocationMap.AllocationPacket(0x80341EAC, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]))),
-    Region.EU: (AllocationMap.AllocationPacket(0x80341E74, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]),
-                (AllocationMap.AllocationPacket(0x80341EAC, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]))),
+    Region.EU: (AllocationMap.AllocationPacket(0x80339ff4, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]),
+                (AllocationMap.AllocationPacket(0x8033a02c, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]))),
     Region.JP: (AllocationMap.AllocationPacket(0x80341E74, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]),
                 (AllocationMap.AllocationPacket(0x80341EAC, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]))),
     Region.KR: (AllocationMap.AllocationPacket(0x80341E74, [AllocationMap.InstructionInfo(0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]),
@@ -481,13 +481,13 @@ def main():
         patcher.cxxOptions = ["-Cpp_exceptions off", "-gccinc", "-gccext on", "-enum int",
                               "-fp hard", "-use_lmw_stmw on", "-O4,p", "-c", "-rostr", "-sdata 0", "-sdata2 0"]
     elif patcher.is_clang():
-        patcher.cxxOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=gnu++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
+        patcher.cxxOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=c++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
                               "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive","-fno-function-sections", "-Wall", "-O3", "-r", "-v"]
         patcher.cOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math", "-fdeclspec",
                             "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive","-fno-function-sections", "-Wall", "-O3", "-r", "-v"]
         patcher.sOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables",
                             "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-Wall", "-r", "-v"]
-        patcher.linkOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=gnu++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
+        patcher.linkOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=c++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
                                "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive","-fno-function-sections", "-Wall", "-O3", "-r", "-v"]
     elif patcher.is_gcc():
         patcher.cxxOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20",

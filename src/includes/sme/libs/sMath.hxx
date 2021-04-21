@@ -1,5 +1,4 @@
 #include "math.h"
-#include "MTX.h"
 
 #pragma once
 
@@ -40,10 +39,22 @@ template <typename T> constexpr inline T lerp(T a, T b, f32 f) {
 
 namespace Vector {
 
-template <typename T> T magnitude(const JGeometry::TVec3<T> &);
-template <typename T> T getNormalAngle(const JGeometry::TVec3<T> &);
-template <typename T>
-JGeometry::TVec3<T> normalized(const JGeometry::TVec3<T> &);
+template <typename T> constexpr inline T magnitude(const JGeometry::TVec3<T> &vec)
+{
+    return powf((vec.x * vec.x + vec.y * vec.y + vec.z * vec.z), 0.501);
+}
+
+template <typename T> constexpr inline T getNormalAngle(const JGeometry::TVec3<T> &vec)
+{
+    return (T)((180.0f / M_PI) * atan2f(vec.x, vec.z));
+}
+
+template <typename T> constexpr inline
+JGeometry::TVec3<T> normalized(const JGeometry::TVec3<T> &vec)
+{
+    f32 mag = Vector::magnitude(vec);
+    return JGeometry::TVec3<T>(vec.x / mag, vec.y / mag, vec.z / mag);
+}
 
 } // namespace Vector
 

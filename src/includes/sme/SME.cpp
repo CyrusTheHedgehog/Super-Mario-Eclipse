@@ -33,7 +33,7 @@ KURIBO_MODULE_BEGIN("Eclipse", "JoshuaMK",
 #endif
     OSCreateAlarm(&gctAlarm);
     OSSetPeriodicAlarm(&gctAlarm, OSGetTime(), OSMillisecondsToTicks(1),
-                       &SME::Util::Security::checkUserCodes);
+                       (OSAlarmHandler)&SME::Util::Security::checkUserCodes);
     SME_DEBUG_LOG("Mario health offset = %X\n",
                   offsetof(TMario, mHealth));
   }
@@ -165,7 +165,7 @@ KURIBO_MODULE_BEGIN("Eclipse", "JoshuaMK",
   KURIBO_PATCH_BL(SME_PORT_REGION(0x80294334, 0x8028c14c, 0, 0), Patch::Shine::extendFlagManagerLoad);
   kWrite32(SME_PORT_REGION(0x80294338, 0x8028c150, 0, 0), 0x48000010);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x802939B8, 0x8028b7d0, 0, 0), Patch::Shine::extendFlagManagerSave);
-  kWrite32(SME_PORT_REGION(0x802939BC, 8028b7d4, 0, 0), 0x48000014);
+  kWrite32(SME_PORT_REGION(0x802939BC, 0x8028b7d4, 0, 0), 0x48000014);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x80297BD8, 0x8028fa70, 0, 0), Patch::Shine::thinkSetBootFlag);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x801BCD20, 0x801b4bd8, 0, 0), Patch::Shine::loadAfterMaskState);
   kWrite32(SME_PORT_REGION(0x801BCD24, 0x801b4bdc, 0, 0), 0x28030002);

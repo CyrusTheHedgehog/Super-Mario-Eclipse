@@ -27,7 +27,9 @@
         "initializer_list": "cpp",
         "limits": "cpp",
         "new": "cpp",
-        "xstddef": "cpp"
+        "xstddef": "cpp",
+        "*.tcc": "cpp",
+        "typeinfo": "cpp"
     },
     "cmake.configureOnOpen": false
 }
