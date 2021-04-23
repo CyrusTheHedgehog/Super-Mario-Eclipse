@@ -27,7 +27,6 @@ extern "C"
     float fabsf(float x);
     float powf(float, float);
     float sinf(float);
-    inline float sqrtf(float x) { return powf(x, 0.5); };
     float tanf(float);
 
     extern float NAN;

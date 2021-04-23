@@ -329,6 +329,8 @@ static void maintainYoshi(TYoshi *yoshi)
 // extern -> SME.cpp
 void Patch::CKit::realTimeCustomAttrsHandler(TMario *player)
 {
-    maintainYoshi(player->mYoshi);
+    if(player->mYoshi){
+        maintainYoshi(player->mYoshi);
+    }
     setPositions__6TMarioFv(player);
 }
