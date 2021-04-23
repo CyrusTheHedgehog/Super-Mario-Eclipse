@@ -9,6 +9,7 @@
 #include "sms/JSystem/JGeometry.hxx"
 #include "sms/JSystem/JSU/JSUMemoryStream.hxx"
 #include "sms/JSystem/JUT/JUTColor.hxx"
+#include "sms/camera/PolarSubCamera.hxx"
 #include "sms/actor/Mario.hxx"
 
 namespace SME::Class {

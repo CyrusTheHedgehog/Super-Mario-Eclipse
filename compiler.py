@@ -8,7 +8,7 @@ from io import BytesIO
 from pathlib import Path
 from typing import List, Optional, Union
 
-import pykamek
+#import pykamek
 
 TMPDIR = Path("tmp-compiler")
 
@@ -258,7 +258,7 @@ class Compiler(object):
             print("")
 
             args = [*objects.split(" "), "--static", f"0x{self.startaddr:08X}", *cmdtype]
-            pykamek.main(args)
+            #pykamek.main(args)
 
             return tmpDumpCode
         elif self.is_clang():
@@ -441,13 +441,13 @@ def main():
     if patcher.is_codewarrior():
         patcher.cxxOptions = ["-Cpp_exceptions off", "-gccinc", "-gccext on", "-enum int", "-fp hard", "-use_lmw_stmw on", "-O4,p", "-c", "-rostr", "-sdata 0", "-sdata2 0"]
     elif patcher.is_clang():
-        patcher.cxxOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=gnu++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
-                              "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive", "-Wall", "-O3", "-r", "-v"]
+        patcher.cxxOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=c++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
+                              "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive", "-O3", "-r", "-v"]
         patcher.cOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
                             "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive", "-Wall", "-O3", "-r", "-v"]
         patcher.sOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables",
                             "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-Wall", "-r", "-v"]
-        patcher.linkOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=gnu++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
+        patcher.linkOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=c++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
                                "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive", "-Wall", "-O3", "-r", "-v"]
     elif patcher.is_gcc():
         patcher.cxxOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20", "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
