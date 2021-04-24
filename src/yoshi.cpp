@@ -33,7 +33,7 @@ bool TYoshi::isGreenYoshiAscendingWater(TMario *player) {
 // 0x8026EB00, 0x8026EBFC, 0x8026F218
 // extern -> SME.cpp
 bool Patch::Yoshi::isYoshiDie(TMario *player) {
-  return !player->mYoshi->isGreenYoshi();
+  return false;//!player->mYoshi->isGreenYoshi();
 }
 
 // 0x801BC868

@@ -67,6 +67,7 @@ s32 Patch::Card::probeCard(TCardManager *cardManager)
 // extern -> SME.cpp
 char *Patch::Card::formatCardMessage(char *dst, const char *src, s32 len)
 {
+    OSReport("attempting format\n");
     String fmtMessage(src, len);
     Util::formatBMG(fmtMessage);
     return strncpy(dst, fmtMessage.data(), len);;

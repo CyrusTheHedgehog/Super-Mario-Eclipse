@@ -32,6 +32,7 @@ JKRExpHeap *SME::Patch::Init::createGlobalHeaps(void *newHeap, size_t size,
       JKRExpHeap::create(0x10000, JKRHeap::sRootHeap, false);
   auto *gameHeap =
       JKRExpHeap::create(newHeap, size - 0x200000, rootHeap, unk_1);
+  
   return gameHeap;
 }
 
