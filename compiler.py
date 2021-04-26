@@ -46,13 +46,13 @@ class Compiler(object):
                  startaddr: int = 0x80000000):
         if isinstance(compilerPath, str):
             compilerPath = Path(compilerPath)
-        
+
         self.dest = Path(dest) if isinstance(dest, str) else dest
         self.linker = Path(linker) if isinstance(linker, str) else linker
 
         if self.linker and not self.linker.exists():
             raise FileNotFoundError(f"Linker map could not be found :: {self.linker}")
-            
+
         self.dump = dump
         self.startaddr = startaddr
 
@@ -277,7 +277,7 @@ class Compiler(object):
 
             tmpfile = TMPDIR / f"tmp.o"
 
-            if src.is_file(): 
+            if src.is_file():
                 if src.suffix in (".cpp", ".cxx", ".c++"):
                     subprocess.run([str(_clangCpp.resolve()), str(src.resolve()), *self._includes, *self._defines, *self.cxxOptions, "-o", str(tmpfile)],
                                     text=True)
@@ -302,17 +302,14 @@ class Compiler(object):
                         sObjects.append(str(f.resolve()))
 
                 if len(cppObjects) > 0:
-                    print([str(_clangCpp.resolve()), *cppObjects, *self._includes, *self._defines, *self.cxxOptions, "-o", str(TMPDIR / f"cpp_obj.o")])
                     subprocess.run([str(_clangCpp.resolve()), *cppObjects, *self._includes, *self._defines, *self.cxxOptions, "-o", str(TMPDIR / f"cpp_obj.o")],
                                     text=True)
                     linkObjects.append(str(TMPDIR / f"cpp_obj.o"))
                 if len(cObjects) > 0:
-                    print([str(_clangCpp.resolve()), *cppObjects, *self._includes, *self._defines, *self.cOptions, "-o", str(TMPDIR / f"c_obj.o")])
                     subprocess.run([str(_clangCpp.resolve()), *cObjects, *self._includes, *self._defines, *self.cOptions, "-o", str(TMPDIR / f"c_obj.o")],
                                     text=True)
                     linkObjects.append(str(TMPDIR / f"c_obj.o"))
                 if len(sObjects) > 0:
-                    print([str(_clangCpp.resolve()), *cppObjects, *self._includes, *self._defines, *self.sOptions, "-o", str(TMPDIR / f"s_obj.o")])
                     subprocess.run([str(_clangCpp.resolve()), *sObjects, *self._includes, *self._defines, *self.sOptions, "-o", str(TMPDIR / f"s_obj.o")],
                                     text=True)
                     linkObjects.append(str(TMPDIR / f"s_obj.o"))
@@ -345,7 +342,7 @@ class Compiler(object):
 
             tmpfile = TMPDIR / f"tmp.o"
 
-            if src.is_file(): 
+            if src.is_file():
                 if src.suffix in (".cpp", ".cxx", ".c++"):
                     subprocess.run([str(_gccCpp.resolve()), str(src.resolve()), *self._includes, *self._defines, *self.cxxOptions, "-o", str(TMPDIR / f"tmp.o")],
                                     text=True)
@@ -387,7 +384,7 @@ class Compiler(object):
 
                 subprocess.run([str(_gccCpp.resolve()), *linkObjects, *self._includes, *self._defines, *self.linkOptions, "-o", str(TMPDIR / f"tmp.o")],
                                 text=True)
-                
+
 
             kxefile = tmpfile.with_suffix(".kxe")
             subprocess.run(f'tools/KuriboConverter/KuriboConverter.exe "{tmpfile}" "{kxefile}" "{self.linker.resolve()}"',
@@ -412,7 +409,7 @@ class Compiler(object):
 
 
 def main():
-    parser = argparse.ArgumentParser("SMS-Patcher", description="C++ Patcher for SMS NTSC-U, using Kamek by Treeki")
+    parser = argparse.ArgumentParser("SMS-worker", description="C++ worker for SMS NTSC-U, using Kamek by Treeki")
 
     parser.add_argument("src", help="Source(s) to compile", nargs="+")
     parser.add_argument("--dolfile", help="SMS NTSC-U DOL")
@@ -445,15 +442,15 @@ def main():
                               "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive", "-O3", "-r", "-v"]
         patcher.cOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
                             "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive", "-Wall", "-O3", "-r", "-v"]
-        patcher.sOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables",
+        worker.sOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables",
                             "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-Wall", "-r", "-v"]
         patcher.linkOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-std=c++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
                                "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fuse-ld=lld", "-fpermissive", "-Wall", "-O3", "-r", "-v"]
-    elif patcher.is_gcc():
-        patcher.cxxOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20", "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
-        patcher.cOptions = ["-nodefaultlibs", "-nostdlib", "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
-        patcher.sOptions = ["-nodefaultlibs", "-nostdlib", "-fno-exceptions", "-fno-rtti", "-Wall", "-O3", "-r"]
-        patcher.linkOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20", "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
+    elif worker.is_gcc():
+        worker.cxxOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20", "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
+        worker.cOptions = ["-nodefaultlibs", "-nostdlib", "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
+        worker.sOptions = ["-nodefaultlibs", "-nostdlib", "-fno-exceptions", "-fno-rtti", "-Wall", "-O3", "-r"]
+        worker.linkOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20", "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
 
     worker.run(args.src, args.dolfile)
 

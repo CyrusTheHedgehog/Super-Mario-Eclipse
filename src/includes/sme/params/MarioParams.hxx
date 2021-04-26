@@ -11,6 +11,7 @@
 #include "sms/JSystem/JUT/JUTColor.hxx"
 #include "sms/camera/PolarSubCamera.hxx"
 #include "sms/actor/Mario.hxx"
+#include "sms/camera/PolarSubCamera.hxx"
 
 namespace SME::Class {
 
