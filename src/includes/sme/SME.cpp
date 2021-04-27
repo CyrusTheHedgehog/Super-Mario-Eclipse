@@ -103,7 +103,7 @@ KURIBO_MODULE_BEGIN("Eclipse", "JoshuaMK",
   // kWrite32(SME_PORT_REGION(0x80262584, 0x8025a310, 0, 0), 0x2C030000);
 
   // fruit.cpp
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x801E542C, 0x801dd304, 0, 0), Patch::Fruit::canFruitDieWater);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x801E542C, 0x801dd304, 0, 0), Patch::Fruit::canFruitDieWater);
   kWrite32(SME_PORT_REGION(0x801E5430, 0x801dd308, 0, 0), 0x2C030000);
   kWrite32(SME_PORT_REGION(0x801E5434, 0x801dd30c, 0, 0), 0x41820140);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x8023F964, 0x802376f0, 0, 0), Patch::Fruit::chooseGrabDistancing);
@@ -112,18 +112,18 @@ KURIBO_MODULE_BEGIN("Eclipse", "JoshuaMK",
   // init_mods.cpp
   KURIBO_PATCH_BL(SME_PORT_REGION(0x80005328, 0x80005328, 0, 0), Patch::Init::initCodeProtection);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x802A750C, 0x8029f588, 0, 0), Patch::Init::createGlobalHeaps);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x802A7140, 0x8029f02c, 0, 0), Patch::Init::setupMarioDatas);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x802A716C, 0x8029f058, 0, 0), Patch::Init::initFirstModel);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x802998B4, 0x8029174c, 0, 0), Patch::Init::initFileMods);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x80280180, 0x80277f0c, 0, 0), Patch::Init::initShineShadow);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x802B7A4C, 0x802afa1c, 0, 0), Patch::Init::initSoundBank);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x802983F0, 0x80290288, 0, 0), Patch::Init::initMusicTrack);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x80298420, 0x802902b8, 0, 0), Patch::Init::initMusicTrack);
-  // kWrite32(SME_PORT_REGION(0x80276C90, 0x8026ea1c, 0, 0), 0x60000000);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x80276C94, 0x8026ea20, 0, 0), Patch::Init::fromMarioInit);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x800397DC, 0x80039894, 0, 0), Patch::Init::fromShadowMarioInit);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x802A7140, 0x8029f02c, 0, 0), Patch::Init::setupMarioDatas);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x802A716C, 0x8029f058, 0, 0), Patch::Init::initFirstModel);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x802998B4, 0x8029174c, 0, 0), Patch::Init::initFileMods);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x80280180, 0x80277f0c, 0, 0), Patch::Init::initShineShadow);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x802B7A4C, 0x802afa1c, 0, 0), Patch::Init::initSoundBank);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x802983F0, 0x80290288, 0, 0), Patch::Init::initMusicTrack);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x80298420, 0x802902b8, 0, 0), Patch::Init::initMusicTrack);
+  kWrite32(SME_PORT_REGION(0x80276C90, 0x8026ea1c, 0, 0), 0x60000000);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x80276C94, 0x8026ea20, 0, 0), Patch::Init::fromMarioInit);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x800397DC, 0x80039894, 0, 0), Patch::Init::fromShadowMarioInit);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x80271580, 0x8026930c, 0, 0), Patch::Init::initYoshi);
-  // KURIBO_PATCH_BL(SME_PORT_REGION(0x8029CCB0, 0x80294b8c, 0, 0), Patch::Init::initCardColors);
+  KURIBO_PATCH_BL(SME_PORT_REGION(0x8029CCB0, 0x80294b8c, 0, 0), Patch::Init::initCardColors);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x802B8B20, 0x802b0af0, 0, 0), Patch::Init::initCollisionWarpLinks);
   KURIBO_PATCH_BL(SME_PORT_REGION(0x802B57E4, 0x802ad768, 0, 0), Patch::Init::createUIHeap);
 
