@@ -12,7 +12,8 @@ extern "C" s16 mario_shadowCrashPatch();
 extern "C" void shine_animationFreezeCheck();
 extern "C" void shine_thinkCloseCamera();
 
-extern OSAlarm gctAlarm;
+extern OSAlarm gGctAlarm;
+extern OSThread gMusicThread;
 
 #define _SME_PATCH_RAM
 #define _SME_EXECUTE_LOADS
@@ -26,14 +27,15 @@ using namespace SME;
 static void initMod() {
   SME_DEBUG_LOG(
       "Codeblocker - Creating OSAlarm at %p; Calls %p every %0.4f seconds\n",
-      &gctAlarm, &SME::Util::Security::checkUserCodes, 0.001f);
+      &gGctAlarm, &SME::Util::Security::checkUserCodes, 0.001f);
 #ifdef SME_DEBUG
   OSInitStopwatch(&gctStopwatch, "Codeblocker");
 #endif
-  OSCreateAlarm(&gctAlarm);
+  OSCreateAlarm(&gGctAlarm);
   OSSetPeriodicAlarm(
-      &gctAlarm, OSGetTime(), OSMillisecondsToTicks(1),
+      &gGctAlarm, OSGetTime(), OSMillisecondsToTicks(1),
       reinterpret_cast<OSAlarmHandler>(&SME::Util::Security::checkUserCodes));
+    
   SME_DEBUG_LOG("Mario health offset = 0x%X\n", offsetof(TMario, mHealth));
   SME_DEBUG_LOG("J3DFrameCtrl offset = 0x%X\n", offsetof(J3DFrameCtrl, _04));
   Patch::Init::initCodeProtection();
@@ -44,7 +46,7 @@ static void destroyMod() {
 #ifdef SME_DEBUG
   OSStopStopwatch(&gctStopwatch);
 #endif
-  OSCancelAlarm(&gctAlarm);
+  OSCancelAlarm(&gGctAlarm);
 }
 
 #if defined(SME_BUILD_KURIBO) && !defined(SME_BUILD_KAMEK) &&                  \

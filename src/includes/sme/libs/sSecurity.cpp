@@ -1,7 +1,7 @@
 #include "sSecurity.hxx"
 #include "Globals.hxx"
 
-OSAlarm gctAlarm;
+OSAlarm gGctAlarm;
 
 #ifdef SME_DEBUG
     OSStopwatch gctStopwatch;

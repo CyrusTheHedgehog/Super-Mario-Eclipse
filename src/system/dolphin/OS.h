@@ -51,6 +51,12 @@ extern "C"
 #define OS_TVMODE_MPAL 4
 #define OS_TVMODE_PAL60 5
 
+#define OS_MESSAGE_NOBLOCK 0
+#define OS_MESSAGE_BLOCK 1
+
+#define OS_THREAD_ATTR_DETACH 1
+#define OS_THREAD_ATTR_ATTACH 0
+
     typedef u32 OSTick;
     typedef u64 OSTime;
     typedef s32 OSPriority; // 0 is highest priority, 31 is lowest
@@ -245,6 +251,11 @@ extern "C"
     void OSInitThreadQueue(OSThreadQueue *queue);
     OSPriority OSGetThreadPriority(OSThread *thread);
     bool OSIsThreadTerminated(OSThread *thread);
+
+    void OSSendMessage(OSMessageQueue *queue, void *message, bool block);
+    void OSReceiveMessage(OSMessageQueue *queue, void *message, bool block);
+
+    void OSInitMessageQueue(OSMessageQueue *queue, OSMessage *msgbox, u32 msgboxSize);
 
     void OSInitStopwatch(OSStopwatch *watch, const char *name);
     void OSStartStopwatch(OSStopwatch *watch);
