@@ -6,10 +6,13 @@
 #include "SME.hxx"
 #include "sMusic.hxx"
 
+#if 1
+
 using namespace SME::Util;
 using namespace SME::Class;
 
 static AudioStreamer::AudioCommand sAudioCommand = AudioStreamer::AudioCommand::NONE;
+AudioStreamer AudioStreamer::sInstance = AudioStreamer();
 
 void *mainLoop(void *param) {
   AudioStreamer *streamer = reinterpret_cast<AudioStreamer *>(param);
@@ -243,3 +246,5 @@ bool Music::isValidBGM(u32 id) {
     return false;
   }
 }
+
+#endif

@@ -12,6 +12,8 @@ constexpr size_t AudioStackSize = 0x4000;
 
 extern void *mainLoop(void *param);
 
+#if 1
+
 namespace SME::Class {
 
 class AudioStreamer : public OSThread {
@@ -66,7 +68,7 @@ private:
 public:
   static AudioStreamer &getInstance() {
     static AudioStreamer instance;
-    return instance;
+    return sInstance;
   }
 
   ~AudioStreamer() { OSCancelThread(this); }
@@ -107,11 +109,12 @@ private:
   s32 _mWhere;
   JSUStreamSeekFrom _mWhence;
 
-  static bool sInitialized;
   static AudioStreamer sInstance;
 };
 
 } // namespace SME::Class
+
+#endif
 
 namespace SME::Util::Music {
 

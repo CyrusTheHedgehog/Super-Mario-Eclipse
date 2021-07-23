@@ -6,6 +6,8 @@
 using namespace SME;
 using namespace SME::Class;
 
+#if 1
+
 // 0x80016998
 u32 SME::Patch::Music::setIsValid(u32 musicID) {
   TGlobals::sIsAudioStreamAllowed =
@@ -51,3 +53,5 @@ void SME::Patch::Music::stopMusicOnStageExit(TMarioGamePad *gamepad) {
     streamer.next(0.0f);
   reset__9RumbleMgrFv(gamepad);
 }
+
+#endif
