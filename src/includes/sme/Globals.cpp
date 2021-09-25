@@ -66,6 +66,7 @@ Class::TPlayerData *TGlobals::getPlayerData(TMario *player) {
     else if (cfg->getPlayer() == player)
       return cfg;
   }
+  SME_DEBUG_LOG("Player data not found\n");
   return nullptr;
 }
 
