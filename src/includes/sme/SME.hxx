@@ -73,7 +73,7 @@
 #define SME_DEMO
 
 #define SME_MODULE_NAME "Eclipse"
-#define SME_AUTHOR_NAME "JoshuaMK"
+#define SME_AUTHOR_NAME "JoshuaMK & Cyrus"
 
 #if defined(SME_DEBUG) && !defined(SME_RELEASE)
 #define SME_VERSION_TAG                                                        \

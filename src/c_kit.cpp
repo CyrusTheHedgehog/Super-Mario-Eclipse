@@ -15,7 +15,7 @@ extern J2DTextBox gDebugTextBox;
 // this is ran once
 // extern -> SME.cpp
 void Patch::CKit::onSetup(TMarDirector *director) {
-  gDebugTextBox = J2DTextBox(gpSystemFont->mFont, "Debug Mode");
+  // gDebugTextBox = J2DTextBox(gpSystemFont->mFont, "Debug Mode");
 
   // run replaced call
   director->setupObjects();
@@ -59,8 +59,8 @@ s32 Patch::CKit::onUpdate(void *director) { // movie director
   const f32 frameRate = SME::TGlobals::isVariableFrameRate()
                             ? SME::TGlobals::getFrameRate()
                             : SME::TGlobals::getFrameRate();
-  *(f32 *)SME_PORT_REGION(0x804167B8, 0, 0, 0) = 0.5f * (frameRate / 30.0f);
-  *(f32 *)SME_PORT_REGION(0x80414904, 0, 0, 0) = 0.01f * (frameRate / 30.0f);
+  *(f32 *)SME_PORT_REGION(0x804167B8, 0x8040dd10, 0, 0) = 0.5f * (frameRate / 30.0f);
+  *(f32 *)SME_PORT_REGION(0x80414904, 0x8040be54, 0, 0) = 0.01f * (frameRate / 30.0f);
   gpApplication.mDisplay->mRetraceCount = frameRate > 30.0f ? 1 : 2;
   // ====================== //
 

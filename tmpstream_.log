@@ -1,0 +1,633 @@
+clang version 13.0.0 (https://github.com/DotKuribo/llvm-project.git 1184c308ffba94c861b30ec88b16e8eb8ac80776)
+Target: powerpc-ibm-kuribo-eabi-gekko
+Thread model: posix
+InstalledDir: F:\Github\Super-Mario-Eclipse\compiler\clang
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name camera.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\camera-abc8fe.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\camera.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name card.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\card-f3ed86.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\card.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name cheats.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\cheats-53ea6e.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\cheats.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name collision.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\collision-540ff0.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\collision.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name c_kit.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\c_kit-a9ce89.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\c_kit.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name debug.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\debug-f39ee8.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\debug.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name demo.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\demo-bc24bc.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\demo.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name file_flags.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\file_flags-9755ac.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\file_flags.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name flagmanager.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\flagmanager-f2c766.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\flagmanager.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name fludd.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\fludd-218232.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\fludd.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name framerate.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\framerate-5832a0.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\framerate.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name fruit.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\fruit-a56216.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\fruit.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name init_mods.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\init_mods-0a6c4b.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\init_mods.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name mario.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\mario-dc0ffc.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\mario.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name multiplayer.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\multiplayer-6d655b.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\multiplayer.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name music.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\music-7d7bea.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\music.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name patches.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\patches-7e16d7.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\patches.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name shine.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\shine-cd4ad0.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\shine.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name stage.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\stage-11f2d8.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\stage.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sun.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sun-b588f3.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\sun.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sunscript.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sunscript-b44d9c.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\sunscript.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name widescreen.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\widescreen-2768c2.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\widescreen.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name yoshi.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\yoshi-4a817d.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\yoshi.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CheatHandler.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\CheatHandler-18053c.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\CheatHandler.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name Globals.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\Globals-72d98c.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\Globals.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name Kernel.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\Kernel-f579bc.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\Kernel.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name Player.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\Player-274936.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\Player.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name SME.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\SME-928cb4.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\SME.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name WarpCollision.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\WarpCollision-8131b6.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\collision\\WarpCollision.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name DarkZhine.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\DarkZhine-e9033b.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\enemy\\DarkZhine.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sBmg.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sBmg-54f42e.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\libs\\sBmg.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sGeometry.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sGeometry-6c4a72.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\libs\\sGeometry.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sMath.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sMath-43a8b9.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\libs\\sMath.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sMemory.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sMemory-693695.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\libs\\sMemory.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sMusic.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sMusic-10d1e4.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\libs\\sMusic.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sSecurity.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sSecurity-ba80c6.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\libs\\sSecurity.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.
+ "F:\\Github\\Super-Mario-Eclipse\\compiler\\clang\\clang.exe" -cc1 -triple powerpc-ibm-kuribo-eabi-gekko -emit-llvm-bc -flto -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name sString.cpp -mrelocation-model static -mframe-pointer=none -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -fno-use-init-array -target-cpu ppc -mfloat-abi hard -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system\\dolphin" -I "F:\\Github\\Super-Mario-Eclipse\\src\\system" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme" -I "F:\\Github\\Super-Mario-Eclipse\\src\\includes" -D SME_MAX_SHINES=300 -D SME_RELEASE=1 -D SME_BUILD_KURIBO=1 -D PAL=1 -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include\\ppc_wrappers" -internal-isystem /usr/local/include -internal-isystem "F:\\Github\\Super-Mario-Eclipse\\compiler\\lib\\clang\\13.0.0\\include" -internal-externc-isystem /include -internal-externc-isystem /usr/include -O3 -Werror -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir "F:\\Github\\Super-Mario-Eclipse" -ferror-limit 19 -fno-rtti -fno-signed-char -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fdeclspec -vectorize-loops -vectorize-slp -fno-c++-static-destructors -faddrsig -o "C:\\Users\\Ichthus\\AppData\\Local\\Temp\\sString-c972fd.o" -x c++ "F:\\Github\\Super-Mario-Eclipse\\src\\includes\\sme\\libs\\sString.cpp"
+clang -cc1 version 13.0.0 based upon LLVM 13.0.0git default target x86_64-pc-windows-msvc
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include\ppc_wrappers"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/include"
+ignoring nonexistent directory "/usr/include"
+ignoring nonexistent directory "/usr/local/include"
+ignoring nonexistent directory "F:\Github\Super-Mario-Eclipse\compiler\lib\clang\13.0.0\include"
+ignoring nonexistent directory "/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ F:\Github\Super-Mario-Eclipse\src\system\dolphin
+ F:\Github\Super-Mario-Eclipse\src\system
+ F:\Github\Super-Mario-Eclipse\src\includes\sme
+ F:\Github\Super-Mario-Eclipse\src\includes
+End of search list.

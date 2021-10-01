@@ -386,7 +386,7 @@ static inline void resetValuesOnCollisionChange(TMario *player) {
 // 0x802500B8
 // extern -> SME.cpp
 u32 Patch::Collision::updateCollisionContext(TMario *player) {
-  constexpr s16 CrushTimeToDie = 0;
+  constexpr s16 CrushTimeToDie = 60;
 
   resetValuesOnStateChange(player);
   resetValuesOnGroundContact(player);
@@ -396,7 +396,7 @@ u32 Patch::Collision::updateCollisionContext(TMario *player) {
   SME::Class::TPlayerData *playerData = SME::TGlobals::getPlayerData(player);
 
   const f32 marioCollisionHeight =
-      *(f32 *)SME_PORT_REGION(0x80415CC4, 0, 0, 0) *
+      *(f32 *)SME_PORT_REGION(0x80415CC4, 0x8040d21c, 0, 0) *
       playerData->getParams()->mSizeMultiplier.get();
 
   Vec playerPos;
@@ -405,8 +405,8 @@ u32 Patch::Collision::updateCollisionContext(TMario *player) {
   TBGCheckData *roofTri;
 
   f32 roofHeight = checkRoofPlane__6TMarioFRC3VecfPPC12TBGCheckData(
-      player, playerPos, playerPos.y + (marioCollisionHeight / 4), &roofTri);
-
+      player, &playerPos, playerPos.y + (marioCollisionHeight / 4), &roofTri);
+  SME_LOG("lemon %f\n",roofHeight - player->mFloorBelow);
   if (!player->mAttributes.mIsGameOver) {
     if (roofHeight - player->mFloorBelow < (marioCollisionHeight - 40.0f) &&
         !(player->mState & static_cast<u32>(TMario::State::AIRBORN)) &&
@@ -418,7 +418,7 @@ u32 Patch::Collision::updateCollisionContext(TMario *player) {
     }
 
     if (playerData->mCollisionFlags.mCrushedTimer > CrushTimeToDie) {
-      loserExec__6TMarioFv(player);
+      // loserExec__6TMarioFv(player);
       playerData->mCollisionFlags.mCrushedTimer = 0;
     }
   }

@@ -85,8 +85,8 @@ static SME_PURE_ASM bool makeWaterHitCheckForDeath(TBGCheckData *col) {
       "lis 12, 0x8018           \n\t"
       "ori 12, 12, 0xC36C       \n\t",
 
-      "lis 12, 0           \n\t"
-      "ori 12, 12, 0       \n\t",
+      "lis 12, 0x8018           \n\t"
+      "ori 12, 12, 0x4bf4       \n\t",
 
       "lis 12, 0           \n\t"
       "ori 12, 12, 0       \n\t",
@@ -99,10 +99,10 @@ static SME_PURE_ASM bool makeWaterHitCheckForDeath(TBGCheckData *col) {
   );
   // clang-format on
 }
-SME_PATCH_B(SME_PORT_REGION(0x8018C368, 0, 0, 0), makeWaterHitCheckForDeath);
+SME_PATCH_B(SME_PORT_REGION(0x8018C368, 0x80184bf0, 0, 0), makeWaterHitCheckForDeath);
 
 // Make illegal data not downwarp anymore
-SME_WRITE_32(SME_PORT_REGION(0x8018D08C, 0, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x8018D08C, 0x80185914, 0, 0), 0x60000000);
 
 static void patchRideMovementUpWarp(Mtx out, Vec *ride, Vec *pos) {
   TMario *player;
@@ -112,28 +112,28 @@ static void patchRideMovementUpWarp(Mtx out, Vec *ride, Vec *pos) {
     PSMTXMultVec(out, ride, pos);
   }
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80250514, 0, 0, 0), patchRideMovementUpWarp);
+SME_PATCH_BL(SME_PORT_REGION(0x80250514, 0x80248220, 0, 0), patchRideMovementUpWarp);
 
 static void initBinaryNullptrPatch(TSpcBinary *binary) {
   if (binary)
     binary->init();
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80289098, 0, 0, 0), initBinaryNullptrPatch);
+SME_PATCH_BL(SME_PORT_REGION(0x80289098, 0x80280e24, 0, 0), initBinaryNullptrPatch);
 
 static void scaleDrawDistanceNPC(f32 x, f32 y, f32 near, f32 far) {
   SetViewFrustumClipCheckPerspective__Fffff(x, y, near, far * 2);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8020A2A4, 0, 0, 0), scaleDrawDistanceNPC);
+SME_PATCH_BL(SME_PORT_REGION(0x8020A2A4, 0x80202188, 0, 0), scaleDrawDistanceNPC);
 
 static bool scaleDrawDistanceCamera(CPolarSubCamera *cam) {
   JSGSetProjectionFar__Q26JDrama7TCameraFf(cam, DrawDistance);
   return cam->isNormalDeadDemo();
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80023828, 0, 0, 0), scaleDrawDistanceCamera);
+SME_PATCH_BL(SME_PORT_REGION(0x80023828, 0x800238a4, 0, 0), scaleDrawDistanceCamera);
 
 // READY GO TEXT PATCH FOR THIS BULLSHIT THING DADDY NINTENDO DID
-SME_WRITE_32(SME_PORT_REGION(0x80171C30, 0, 0, 0), 0x2C000005);
-SME_WRITE_32(SME_PORT_REGION(0x80171C38, 0, 0, 0), 0x38000005);
+SME_WRITE_32(SME_PORT_REGION(0x80171C30, 0x80167a40, 0, 0), 0x2C000005);
+SME_WRITE_32(SME_PORT_REGION(0x80171C38, 0x80167a48, 0, 0), 0x38000005);
 
 static void normalizeHoverSlopeSpeed(f32 floorPos) {
   TMario *player;
@@ -166,7 +166,7 @@ static void normalizeHoverSlopeSpeed(f32 floorPos) {
                                                         lookAtRatio, 1.0f),
                               0.0f, 1.0f));
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802568F0, 0, 0, 0), normalizeHoverSlopeSpeed);
+SME_PATCH_BL(SME_PORT_REGION(0x802568F0, 0x8024e67c, 0, 0), normalizeHoverSlopeSpeed);
 
 static void touchEnemy__item(THitActor *touched) {
   //...
@@ -273,7 +273,7 @@ static void cullJ2DPrint(J2DPrint *printer, int unk_0, int unk_1, u8 unk_2, cons
 #endif
 
 // Title Screen Never Fades to THP
-SME_WRITE_32(SME_PORT_REGION(0x8016D53C, 0, 0, 0), 0x48000344);
+SME_WRITE_32(SME_PORT_REGION(0x8016D53C, 0x801628ac, 0, 0), 0x48000344);
 
 // Load msound.aaf from AudioRes folder (NTSC-U) [Xayrga/JoshuaMK] 
 //SME_WRITE_32(SME_PORT_REGION(0x80014F9C, 0, 0, 0), 0x60000000);

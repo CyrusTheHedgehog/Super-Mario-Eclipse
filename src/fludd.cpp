@@ -92,7 +92,7 @@ static bool canCollectFluddItem() {
   }
   return isOnYoshi || !TGlobals::getPlayerData(player)->getCanUseFludd();
 }
-SME_PATCH_BL(SME_PORT_REGION(0x801BBD48, 0, 0, 0), canCollectFluddItem);
+SME_PATCH_BL(SME_PORT_REGION(0x801BBD48, 0x801b3c00, 0, 0), canCollectFluddItem);
 
 static void resetNozzleBuzzer(TMapObjGeneral *obj) {
   if (obj->mNumObjs <= 0) {
@@ -100,7 +100,7 @@ static void resetNozzleBuzzer(TMapObjGeneral *obj) {
   }
   control__14TMapObjGeneralFv(obj);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x801BBBF8, 0, 0, 0), resetNozzleBuzzer);
+SME_PATCH_BL(SME_PORT_REGION(0x801BBBF8, 0x801b3ab0, 0, 0), resetNozzleBuzzer);
 
 // 0x800678C4, 0x801A3ED0, 0x801B42D8, 0x8027F7DC, 0x8027F94C, 0x8024E710
 // extern -> SME.cpp

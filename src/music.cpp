@@ -47,7 +47,7 @@ static void initExMusic(MSStageInfo bgm) {
 
   return;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802BB89C, 0, 0, 0), initExMusic);
+SME_PATCH_BL(SME_PORT_REGION(0x802BB89C, 0x802b386c, 0, 0), initExMusic);
 
 // 0x802983F0
 // 0x80298420
@@ -95,9 +95,9 @@ static void initStageMusic() {
 
   return;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802983F0, 0, 0, 0), initStageMusic);
-SME_PATCH_BL(SME_PORT_REGION(0x80298420, 0, 0, 0), initStageMusic);
-SME_PATCH_BL(SME_PORT_REGION(0x802984D0, 0, 0, 0), initStageMusic);
+SME_PATCH_BL(SME_PORT_REGION(0x802983F0, 0x80290288, 0, 0), initStageMusic);
+SME_PATCH_BL(SME_PORT_REGION(0x80298420, 0x802902b8, 0, 0), initStageMusic);
+SME_PATCH_BL(SME_PORT_REGION(0x802984D0, 0x80290368, 0, 0), initStageMusic);
 
 // 0x802A670C
 static void stopMusicOnStageExit(TMarioGamePad *gamepad) {
@@ -117,7 +117,7 @@ static void stopMusicOnStageExit(TMarioGamePad *gamepad) {
 
   reset__9RumbleMgrFv(gamepad);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802A670C, 0, 0, 0), stopMusicOnStageExit);
+SME_PATCH_BL(SME_PORT_REGION(0x802A670C, 0x8029e664, 0, 0), stopMusicOnStageExit);
 
 // 0x80297B7C
 static void stopMusicOnShineGet(u32 musicID) {
@@ -135,7 +135,7 @@ static void stopMusicOnShineGet(u32 musicID) {
 
   MSBgm::startBGM(musicID);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80297B7C, 0, 0, 0), stopMusicOnShineGet);
+SME_PATCH_BL(SME_PORT_REGION(0x80297B7C, 0x8028fa14, 0, 0), stopMusicOnShineGet);
 
 // 0x8024FAB8
 static void stopMusicOnManholeEnter(u32 musicID) {
@@ -150,7 +150,7 @@ static void stopMusicOnManholeEnter(u32 musicID) {
 
   MSBgm::startBGM(musicID);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8024FAB8, 0, 0, 0), stopMusicOnManholeEnter);
+SME_PATCH_BL(SME_PORT_REGION(0x8024FAB8, 0x80247844, 0, 0), stopMusicOnManholeEnter);
 
 // 0x8024FB0C
 static void stopMusicOnManholeExit(u32 musicID, u32 unk_0) {
@@ -165,7 +165,7 @@ static void stopMusicOnManholeExit(u32 musicID, u32 unk_0) {
 
   MSBgm::stopBGM(musicID, unk_0);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8024FB0C, 0, 0, 0), stopMusicOnManholeExit);
+SME_PATCH_BL(SME_PORT_REGION(0x8024FB0C, 0x80247898, 0, 0), stopMusicOnManholeExit);
 
 // 0x802981A8
 static void stopMusicBeforeShineCamera(CPolarSubCamera *cam, const char *demo,
@@ -180,7 +180,7 @@ static void stopMusicBeforeShineCamera(CPolarSubCamera *cam, const char *demo,
   if (streamer->isPlaying())
     streamer->pause(0.2f);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802981A8, 0, 0, 0), stopMusicBeforeShineCamera);
+SME_PATCH_BL(SME_PORT_REGION(0x802981A8, 0x8029006c, 0, 0), stopMusicBeforeShineCamera);
 
 // 0x80297FD4
 static void startMusicAfterShineCamera(CPolarSubCamera *cam) {
@@ -193,4 +193,4 @@ static void startMusicAfterShineCamera(CPolarSubCamera *cam) {
   if (streamer->isPaused())
     streamer->play();
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80297FD4, 0, 0, 0), startMusicAfterShineCamera);
+SME_PATCH_BL(SME_PORT_REGION(0x80297FD4, 0x8028fe6c, 0, 0), startMusicAfterShineCamera);
