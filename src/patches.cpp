@@ -106,13 +106,14 @@ SME_WRITE_32(SME_PORT_REGION(0x8018D08C, 0x80185914, 0, 0), 0x60000000);
 
 static void patchRideMovementUpWarp(Mtx out, Vec *ride, Vec *pos) {
   TMario *player;
+  
   SME_FROM_GPR(30, player);
 
   if (!(player->mState & static_cast<u32>(TMario::State::AIRBORN))) {
     PSMTXMultVec(out, ride, pos);
   }
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80250514, 0x80248220, 0, 0), patchRideMovementUpWarp);
+SME_PATCH_BL(SME_PORT_REGION(0x80250514, 0x802482a0, 0, 0), patchRideMovementUpWarp);
 
 static void initBinaryNullptrPatch(TSpcBinary *binary) {
   if (binary)
