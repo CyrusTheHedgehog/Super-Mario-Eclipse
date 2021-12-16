@@ -1,1 +1,1 @@
-python build.py "F:\ModProjects\SME" -r EU -c CLANG -P KURIBO -s 80427800 -b R --shines 300 --boot ISO --out "log.txt"
+python build.py "F:\ModProjects\SME\root" -r EU -c CLANG -P KURIBO -s 80427800 -b R --shines 300 --boot ISO --out "log.txt"
