@@ -35,6 +35,7 @@
 #include "sms/talk/Talk2D2.hxx"
 #include "types.h"
 
+#include "sme/enemy/FireyPetey.hxx"
 
 #ifndef KURIBO_NO_TYPES
 #define KURIBO_NO_TYPES
@@ -311,6 +312,13 @@ void saveNozzles(TYoshi *yoshi);
 void restoreNozzles(TMario *player);
 
 } // namespace Yoshi
+
+namespace FireyPetey{
+
+  
+  TBossPakkun* createInstance();
+
+} // namespace FireyPetey
 
 } // namespace Patch
 

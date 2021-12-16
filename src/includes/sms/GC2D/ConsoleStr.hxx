@@ -29,12 +29,12 @@ public:
   void startCloseWipe(bool);
   void startOpenWipe();
 
+  u32 _16[33];
   J2DSetScreen *mBigTxScreen;       // 0x0010
   J2DSetScreen *mOpeningDemoScreen; // 0x0014
-
   u32 _18[4];
   TBoundPane *mBoundPanes_Go[3];       // 0x0028
-  JUTPoint mPoints[66];                // 0x0034
+  JUTPoint mPoints[242];                // 0x0034
   TBoundPane *mBoundPanes_ShineGet[6]; // 0x0244
   TBoundPane *mBoundPanes_Miss[7];     // 0x025C
   TExPane *mExPanes_Ready[5];          // 0x0278

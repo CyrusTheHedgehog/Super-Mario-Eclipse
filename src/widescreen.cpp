@@ -199,7 +199,7 @@ static void scalePauseMenuMask(J2DScreen *screen, int x, int y,
 
   screen->draw(x, y, context);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8015600C, 0x8014a87c, 0, 0), scalePauseMenuMask);
+SME_PATCH_BL(SME_PORT_REGION(0x8015600C, 0x8014b028, 0, 0), scalePauseMenuMask);
 
 static void scaleSelectMenuMask(TSelectMenu *menu) {
   TExPane *pane;
@@ -296,8 +296,11 @@ static void fixDemoMasksWideScreen_InitStaticGoPanes(TConsoleStr *consoleStr) {
 
   consoleStr->mDemoMaskExPanes[1]->mRect.copy(*rect);
 }
-// SME_PATCH_BL(SME_PORT_REGION(0x801723F0, 0x801681e0, 0, 0),
-//              fixDemoMasksWideScreen_InitStaticGoPanes);
+
+
+
+SME_PATCH_BL(SME_PORT_REGION(0x801723F0, 0x801681e0, 0, 0),
+             fixDemoMasksWideScreen_InitStaticGoPanes);
 
 static JUTRect sGuideBorderRects[2];
 static J2DPane sGuideBorderPanes[2];
@@ -419,7 +422,7 @@ static void fixDEBSWideScreenText(s32 x1, s32 y1, s32 width, s32 height) {
 
   GXSetScissor(x1 + (195.0f * sDEBSToTimerRatio), y1, width - (195.0f * sDEBSToTimerRatio), height);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80143FDC, 0x80138cac, 0, 0), fixDEBSWideScreenText);
+// SME_PATCH_BL(SME_PORT_REGION(0x80143FDC, 0x80138cac, 0, 0), fixDEBSWideScreenText);
 
 static void fixDEBSWideScreenPanel(TGCConsole2 *console) {
   const f32 ratio = SME::TGlobals::getScreenToFullScreenRatio();
@@ -517,7 +520,7 @@ static SME_PURE_ASM void patchGXScissor() {
     );
   // clang-format on
 }
-// SME_PATCH_B(SME_PORT_REGION(0x80363138, 0x8035b358, 0, 0), patchGXScissor);
+SME_PATCH_B(SME_PORT_REGION(0x80363138, 0x8035b358, 0, 0), patchGXScissor);
 
 #endif
 

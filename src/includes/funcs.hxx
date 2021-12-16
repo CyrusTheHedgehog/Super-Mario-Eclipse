@@ -12213,6 +12213,7 @@
 #define __dt__15TNerveBPTakeOffFv ((int(*)(...))0x80089808)
 #define theNerve__18TNerveBPBreakSleepFv ((int(*)(...))0x80089864)
 #define __dt__18TNerveBPBreakSleepFv ((int(*)(...))0x800898c8)
+#define execute__18TNerveBPBreakSleepCFP24TSpineBase_1 ((int(*)(...))0x80089714)
 #define theNerve__13TNerveBPSleepFv ((int(*)(...))0x8008995c)
 #define __dt__13TNerveBPSleepFv ((int(*)(...))0x800899c0)
 #define __dt__15TNerveBPTornadoFv ((int(*)(...))0x80089f38)

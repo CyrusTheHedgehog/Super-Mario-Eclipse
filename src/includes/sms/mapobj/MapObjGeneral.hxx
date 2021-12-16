@@ -46,7 +46,7 @@ public:
     virtual void thrown();
     virtual void sink();
     virtual void recover();
-    virtual void waitToAppear();
+    virtual long waitToAppear();
     virtual void makeObjBuried();
     virtual void makeObjRecovered();
     virtual void receiveMessageFromPlayer();

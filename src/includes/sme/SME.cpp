@@ -108,10 +108,10 @@ SME_PATCH_B(SME_PORT_REGION(0x802A8AE0, 0x802a0b88, 0, 0), Util::SMS::isOptionMa
 SME_PATCH_BL(SME_PORT_REGION(0x8027C6A4, 0x80274430, 0, 0),
              Patch::CKit::manageLightSize);
 SME_WRITE_32(SME_PORT_REGION(0x8027C6A8, 0x80274434, 0, 0), 0x28030001);
-SME_PATCH_BL(SME_PORT_REGION(0x80153DE8, 0x80148d68, 0, 0),
-             Patch::CKit::formatTalkMessage);
-SME_PATCH_BL(SME_PORT_REGION(0x80153E1C, 0x80148d9c, 0, 0),
-             Patch::CKit::formatTalkMessage);
+// SME_PATCH_BL(SME_PORT_REGION(0x80153DE8, 0x80148d68, 0, 0),
+//              Patch::CKit::formatTalkMessage);
+// SME_PATCH_BL(SME_PORT_REGION(0x80153E1C, 0x80148d9c, 0, 0),
+//              Patch::CKit::formatTalkMessage);
 SME_PATCH_BL(SME_PORT_REGION(0x8024D3A8, 0x80245134, 0, 0),
              Patch::CKit::realTimeCustomAttrsHandler);
 SME_PATCH_BL(SME_PORT_REGION(0x8003F8F0, 0x8003f740, 0, 0),
@@ -146,7 +146,7 @@ SME_PATCH_B(SME_PORT_REGION(0x80294EF4, 0x8028cd0c, 0, 0), Patch::Flag::resetSta
 
 // fludd.cpp
 SME_PATCH_B(SME_PORT_REGION(0x80248F14, 0x80240ca0, 0, 0), Patch::Fludd::isPumpOK);
-SME_WRITE_32(SME_PORT_REGION(0x803DCA00, 0x803d41e2, 0, 0),
+SME_WRITE_32(SME_PORT_REGION(0x803DCA00, 0x803d41e0, 0, 0),
              0x00300000 | TMarioAnimeData::FLUDD::FLUDD_ENABLED);
 SME_PATCH_BL(SME_PORT_REGION(0x8014206C, 0x80136c80, 0, 0),
              Patch::Fludd::hasWaterCardOpen);
@@ -467,6 +467,23 @@ SME_PATCH_BL(SME_PORT_REGION(0x8016B1D4, 0x8016030c, 0, 0), Util::formatBMGRaw);
 
 /* -- PATCHES -- */
 
+SME_PATCH_BL(SME_PORT_REGION(0x8016B1D4, 0x802a20c4, 0, 0), Patch::FireyPetey::createInstance);
+SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x802a20c8, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x802a20cc, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x802a20d0, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x802a20d4, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x802a20d8, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x802a20dc, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x802a20e0, 0, 0), 0x60000000);
+
+
+// bool execute(void* test,TSpineBase<TLiveActor> *param1){
+//   TBossPakkun* that = static_cast<TBossPakkun*>(param1->mTarget);  
+//   SME_LOG("%u\n", that->mActorData);
+//   return execute__18TNerveBPBreakSleepCFP24TSpineBase_1(test,param1);
+// }
+// SME_WRITE_32(SME_PORT_REGION(0x80293AF8, 0x803ac22c, 0, 0), execute);
+
 // Restore Chao Seed
 SME_WRITE_32(SME_PORT_REGION(0x802FD1A0, 0x802f5330, 0, 0), 0x808D8C70);
 
@@ -506,6 +523,11 @@ SME_WRITE_32(SME_PORT_REGION(0x8017A834, 0x801706f8, 0, 0), 0x4800000C);
 SME_WRITE_32(SME_PORT_REGION(0x80297A64, 0x8028f8fc, 0, 0), 0x4800000C);
 #endif
 
+
+// PAL only patch to use fallback message loading
+#ifdef PAL
+// SME_WRITE_32(0x801495c8, 0x3860000a);
+#endif
 
 
 // Hover move on roofs

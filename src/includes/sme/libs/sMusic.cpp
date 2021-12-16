@@ -68,8 +68,8 @@ static void cbForStopStreamAtEndAsync_(s32 result, DVDCommandBlock *cmdblock);
 static void cbForPrepareStreamAsync_(s32 result, DVDFileInfo *finfo) {
   AudioStreamer *streamer = AudioStreamer::getInstance();
   u16 volLR = streamer->getVolumeLR();
-
   // Init AI
+  
   AISetStreamVolLeft(static_cast<u8>(volLR >> 8));
   AISetStreamVolRight(static_cast<u8>(volLR));
   AIResetStreamSampleCount();
@@ -447,6 +447,7 @@ bool AudioStreamer::AudioPacket::exec(DVDFileInfo *handle) {
   if (!DVDOpen(buffer, handle))
     return false;
 
+  
   DVDPrepareStreamAsync(handle, 0, 0, cbForPrepareStreamAsync_);
 
   return true;

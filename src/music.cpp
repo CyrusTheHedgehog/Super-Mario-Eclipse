@@ -180,7 +180,7 @@ static void stopMusicBeforeShineCamera(CPolarSubCamera *cam, const char *demo,
   if (streamer->isPlaying())
     streamer->pause(0.2f);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802981A8, 0x8029006c, 0, 0), stopMusicBeforeShineCamera);
+SME_PATCH_BL(SME_PORT_REGION(0x802981A8, 0x80290040, 0, 0), stopMusicBeforeShineCamera);
 
 // 0x80297FD4
 static void startMusicAfterShineCamera(CPolarSubCamera *cam) {

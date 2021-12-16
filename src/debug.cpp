@@ -1,7 +1,7 @@
 #include "MTX.h"
 #include "types.h"
 
-//#include "sme/obj/WaterBalloon.hxx"
+#include "sme/obj/WaterBalloon.hxx"
 #include "sms/actor/Mario.hxx"
 #include "sms/enemy/EnemyMario.hxx"
 #include "sms/npc/BaseNPC.hxx"
@@ -18,8 +18,8 @@ void Patch::Debug::xyzModifierMario(TMario *player) {
   constexpr f32 baseSpeed = 83.0f;
   constexpr u32 buttons = TMarioGamePad::Buttons::DPAD_UP;
 
-  if (!TGlobals::isDebugMode())
-    return;
+  // if (!TGlobals::isDebugMode())
+  //   return;
 
   const JUTGamePad::CStick &mainStick = player->mController->mControlStick;
   const f32 speedMultiplier =
@@ -113,11 +113,10 @@ void Patch::Debug::updateDebugCollision(TMario *player) {
 }
 
 void createWaterBalloonAndThrow(TMario *player) {
-  return;
-  /*
-  TWaterBalloon *balloon = new TWaterBalloon("waterballoon");
 
-  balloon->initAndRegister("waterballoon");
+  TWaterBalloon *balloon = new TWaterBalloon("waterballoon\n");
+
+  balloon->initAndRegister("waterballoon\n");
   balloon->awake();
 
   hold__14TMapObjGeneralFP10TTakeActor(balloon, player);
@@ -130,5 +129,5 @@ void createWaterBalloonAndThrow(TMario *player) {
              player->mState == static_cast<u32>(TMario::State::FALL)) {
     changePlayerStatus__6TMarioFUlUlb(player, 0x820008AB, 0, 0);
   }
-  */
+  
 }

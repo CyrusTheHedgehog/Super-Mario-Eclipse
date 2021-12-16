@@ -406,7 +406,7 @@ u32 Patch::Collision::updateCollisionContext(TMario *player) {
 
   f32 roofHeight = checkRoofPlane__6TMarioFRC3VecfPPC12TBGCheckData(
       player, &playerPos, playerPos.y + (marioCollisionHeight / 4), &roofTri);
-
+  
   if (!player->mAttributes.mIsGameOver) {
     if (roofHeight - player->mFloorBelow < (marioCollisionHeight - 40.0f) &&
         !(player->mState & static_cast<u32>(TMario::State::AIRBORN)) &&
