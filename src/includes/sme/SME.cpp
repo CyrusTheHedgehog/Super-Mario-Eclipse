@@ -25,6 +25,8 @@ extern OSStopwatch gctStopwatch;
 
 using namespace SME;
 
+extern void makeExtendedObjDataTable();
+
 static void initMod() {
   SME_DEBUG_LOG(
       "Codeblocker - Creating OSAlarm at %p; Calls %p every %0.4f seconds\n",
@@ -37,6 +39,8 @@ static void initMod() {
       &gctAlarm, OSGetTime(), OSMillisecondsToTicks(1),
       reinterpret_cast<OSAlarmHandler>(&SME::Util::Security::checkUserCodes));
   SME_DEBUG_LOG("Registered checkUserCodes at 0x%X\n", &SME::Util::Security::checkUserCodes);
+
+  makeExtendedObjDataTable();
   // Patch::Init::initCodeProtection();
 }
 
@@ -132,10 +136,6 @@ SME_PATCH_BL(SME_PORT_REGION(0x80264CFC, 0x8025ca88, 0, 0),
              Patch::Collision::checkIsGlideBounce);
 SME_PATCH_BL(SME_PORT_REGION(0x8024C558, 0x802442e4, 0, 0),
              Patch::Collision::checkIsRestoreTypeNoFallDamage);
-SME_PATCH_BL(SME_PORT_REGION(0x80250CA0, 0x80248490, 0, 0),
-             Patch::Collision::masterGroundCollisionHandler);
-SME_PATCH_BL(SME_PORT_REGION(0x8025059C, 0x80248328, 0, 0),
-             Patch::Collision::masterAllCollisionHandler);
 
 // file_flags.cpp
 SME_PATCH_BL(SME_PORT_REGION(0x802B1794, 0x802a96a4, 0, 0),
@@ -167,8 +167,6 @@ SME_PATCH_BL(SME_PORT_REGION(0x8024E548, 0x802462d4, 0, 0),
              Patch::Fludd::checkExecWaterGun);
 SME_PATCH_BL(SME_PORT_REGION(0x8026C370, 0x802640fc, 0, 0),
              Patch::Fludd::killTriggerNozzle);
-SME_PATCH_BL(SME_PORT_REGION(0x8026C018, 0x80263da4, 0, 0),
-             Patch::Fludd::spamHoverWrapper);
 SME_PATCH_BL(SME_PORT_REGION(0x80262580, 0x8025a30c, 0, 0),
              Patch::Fludd::checkAirNozzle);
 SME_WRITE_32(SME_PORT_REGION(0x80262584, 0x8025a310, 0, 0), 0x2C030000);
@@ -240,8 +238,7 @@ SME_WRITE_32(SME_PORT_REGION(0x802619D0, 0x80259760, 0, 0), 0x60000000);
   SME_PATCH_BL(SME_PORT_REGION(0x8024E288, 0, 0, 0), Patch::Mario::checkGraffitiAffected);
   // SME_PATCH_BL(0x801E4118, Patch::Mario::rescaleHeldObj);
 #endif
-SME_PATCH_BL(SME_PORT_REGION(0x8024E02C, 0x80245db8, 0, 0),
-             Patch::Mario::manageCustomJumps);
+
 SME_PATCH_BL(SME_PORT_REGION(0x80256678, 0x8024e404, 0, 0),
              Patch::Mario::checkYSpdForTerminalVelocity);
 SME_WRITE_32(SME_PORT_REGION(0x8025667C, 0x8024e408, 0, 0), 0x60000000);

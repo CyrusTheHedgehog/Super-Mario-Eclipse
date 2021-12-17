@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import time
+from enum import Enum
 from fnmatch import fnmatch
 from io import BytesIO, StringIO
 from pathlib import Path
@@ -23,7 +24,7 @@ from prmparser import PrmFile
 
 from compiler import Compiler, Define
 
-TMPDIR = Path("tmp-compiler")
+__TMPDIR = Path("tmp-compiler")
 
 
 @atexit.register
@@ -47,7 +48,7 @@ def wrap_printer(msg: str = "") -> function:
     return decorater_inner
 
 
-class Region:
+class Region(str, Enum):
     US = "US"
     EU = "EU"
     JP = "JP"
@@ -55,7 +56,7 @@ class Region:
     ANY = "ANY"
 
 
-class Patcher:
+class Patcher(str, Enum):
     KAMEK = "KAMEK"
     KURIBO = "KURIBO"
 
@@ -156,6 +157,7 @@ _ALLOC_HI_INFO = AllocationMap({
         0x3C600000, AllocationMap.RelocationType.HI), AllocationMap.InstructionInfo(0x60630000, AllocationMap.RelocationType.LO)]),)
 })
 
+
 class FileStream(object):
     def __init__(self, path: str, stream: IO):
         self.path = path
@@ -165,12 +167,14 @@ class FileStream(object):
         if not self.stream.closed:
             self.stream.close()
 
+
 class FilePatcher(Compiler):
-    class State:
+    class State(str, Enum):
         DEBUG = "DEBUG"
         RELEASE = "RELEASE"
+        RELEASE_DEB = "RELEASE_DEB"
 
-    class BootType:
+    class BootType(str, Enum):
         DOL = "DOL"
         ISO = "ISO"
         NONE = "NONE"
@@ -210,8 +214,10 @@ class FilePatcher(Compiler):
 
         _defines = []
         if self.is_release():
+            debugInfo = Define(
+                "SME_DEBUG") if self.state == FilePatcher.State.RELEASE_DEB else Define("SME_RELEASE")
             _defines.extend(
-                (Define("SME_MAX_SHINES", f"{self.maxShines}"), Define("SME_RELEASE")))
+                (Define("SME_MAX_SHINES", f"{self.maxShines}"), debugInfo))
         elif self.is_debug():
             _defines.extend(
                 (Define("SME_MAX_SHINES", f"{self.maxShines}"), Define("SME_DEBUG")))
@@ -249,7 +255,7 @@ class FilePatcher(Compiler):
             return self.projectDir / "bin" / "debug" / "any"
 
     def is_release(self) -> bool:
-        return self.state == FilePatcher.State.RELEASE
+        return self.state in {FilePatcher.State.RELEASE, FilePatcher.State.RELEASE_DEB}
 
     def is_debug(self) -> bool:
         return self.state == FilePatcher.State.DEBUG
@@ -586,10 +592,12 @@ def main():
     parser.add_argument("-s", "--startaddr", help="Starting address for the linker and code",
                         default="0x80000000", metavar="ADDR")
     parser.add_argument("-b", "--build", help="Build type; R=Release, D=Debug",
-                        choices=["R", "D"], default="D")
+                        choices=["R", "D", "RD"], default="D")
     parser.add_argument("-c", "--compiler", choices=[
                         Compiler.Compilers.CODEWARRIOR, Compiler.Compilers.CLANG, Compiler.Compilers.GCC],
                         default=Compiler.Compilers.CODEWARRIOR, help="Compiler to build with")
+    parser.add_argument("-o", "--optimize-level", help="Optimization strength",
+                        default="2")
     parser.add_argument("-r", "--region", help="Game region",
                         choices=[Region.US, Region.EU, Region.JP, Region.KR], default=Region.US)
     parser.add_argument("-P", "--patcher", help="Game patcher",
@@ -614,6 +622,8 @@ def main():
 
     if args.build == "D":
         build = FilePatcher.State.DEBUG
+    elif args.build == "RD":
+        build = FilePatcher.State.RELEASE_DEB
     else:
         build = FilePatcher.State.RELEASE
 
@@ -626,26 +636,62 @@ def main():
                           args.boot, args.startaddr, args.shines, out)
 
     if patcher.is_codewarrior():
-        patcher.cxxOptions = ["-Cpp_exceptions off", "-gccinc", "-gccext on", "-enum int", "-RTTI off"
-                              "-fp fmadd", "-use_lmw_stmw on", "-O4,p", "-c", "-rostr", "-sdata 0", "-sdata2 0"]
+        patcher.cxxOptions = [
+            "-Cpp_exceptions off", "-gccinc", "-gccext on", "-enum int",
+            "-RTTI off" "-fp fmadd", "-use_lmw_stmw on", f"-O{args.optimize_level}",
+            "-c", "-rostr", "-sdata 0", "-sdata2 0"
+        ]
     elif patcher.is_clang():
-        patcher.cxxOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-std=gnu++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
-                              "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fno-use-cxa-atexit", "-fno-c++-static-destructors", "-fno-function-sections", "-fno-data-sections", "-fuse-ld=lld", "-fpermissive", "-Werror", "-O3", "-r", "-v"]
-        patcher.cOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math", "-fdeclspec",
-                            "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fno-use-cxa-atexit", "-fno-c++-static-destructors", "-fno-function-sections", "-fno-data-sections", "-fuse-ld=lld", "-fpermissive", "-Werror", "-O3", "-r", "-v"]
-        patcher.sOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables",
-                            "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fno-use-cxa-atexit", "-fno-c++-static-destructors", "-fno-function-sections", "-fno-data-sections", "-fuse-ld=lld", "-Werror", "-r", "-v"]
-        patcher.linkOptions = ["--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-std=gnu++17", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
-                               "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array", "-fno-use-cxa-atexit", "-fno-c++-static-destructors", "-fno-function-sections", "-fno-data-sections", "-fuse-ld=lld", "-fpermissive", "-Werror", "-O3", "-r", "-v"]
+        patcher.cxxOptions = [
+            "--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-std=gnu++17",
+            "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
+            "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array",
+            "-fno-use-cxa-atexit", "-fno-c++-static-destructors", "-fno-function-sections",
+            "-fno-data-sections", "-fuse-ld=lld", "-fpermissive", "-Werror",
+            f"-O{args.optimize_level}", "-r", "-v"
+        ]
+        patcher.cOptions = [
+            "--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-fno-exceptions",
+            "-fno-rtti", "-fno-unwind-tables", "-ffast-math", "-fdeclspec",
+            "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array",
+            "-fno-use-cxa-atexit", "-fno-c++-static-destructors", "-fno-function-sections",
+            "-fno-data-sections", "-fuse-ld=lld", "-fpermissive", "-Werror",
+            f"-O{args.optimize_level}", "-r", "-v"
+        ]
+        patcher.sOptions = [
+            "--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-fno-exceptions",
+            "-fno-rtti", "-fno-unwind-tables", "-flto", "-nodefaultlibs", "-nostdlib",
+            "-fno-use-init-array", "-fno-use-cxa-atexit", "-fno-c++-static-destructors",
+            "-fno-function-sections", "-fno-data-sections", "-fuse-ld=lld", "-Werror",
+            "-r", "-v"
+        ]
+        patcher.linkOptions = [
+            "--target=powerpc-gekko-ibm-kuribo-eabi", "-fdeclspec", "-std=gnu++17",
+            "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-ffast-math",
+            "-flto", "-nodefaultlibs", "-nostdlib", "-fno-use-init-array",
+            "-fno-use-cxa-atexit", "-fno-c++-static-destructors", "-fno-function-sections",
+            "-fno-data-sections", "-fuse-ld=lld", "-fpermissive", "-Werror",
+            f"-O{args.optimize_level}", "-r", "-v"]
     elif patcher.is_gcc():
-        patcher.cxxOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20",
-                              "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
-        patcher.cOptions = ["-nodefaultlibs", "-nostdlib", "-fno-exceptions",
-                            "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
-        patcher.sOptions = ["-nodefaultlibs", "-nostdlib",
-                            "-fno-exceptions", "-fno-rtti", "-Wall", "-O3", "-r"]
-        patcher.linkOptions = ["-nodefaultlibs", "-nostdlib", "-std=gnu++20",
-                               "-fno-exceptions", "-fno-rtti", "-ffast-math", "-fpermissive", "-Wall", "-O3", "-r"]
+        patcher.cxxOptions = [
+            "-nodefaultlibs", "-nostdlib", "-std=gnu++20",
+            "-fno-exceptions", "-fno-rtti", "-ffast-math",
+            "-fpermissive", "-Wall", f"-O{args.optimize_level}", "-r"
+        ]
+        patcher.cOptions = [
+            "-nodefaultlibs", "-nostdlib", "-fno-exceptions",
+            "-fno-rtti", "-ffast-math", "-fpermissive",
+            "-Wall", f"-O{args.optimize_level}", "-r"
+        ]
+        patcher.sOptions = [
+            "-nodefaultlibs", "-nostdlib", "-fno-exceptions",
+            "-fno-rtti", "-Wall", f"-O{args.optimize_level}", "-r"
+        ]
+        patcher.linkOptions = [
+            "-nodefaultlibs", "-nostdlib", "-std=gnu++20",
+            "-fno-exceptions", "-fno-rtti", "-ffast-math",
+            "-fpermissive", "-Wall", f"-O{args.optimize_level}", "-r"
+        ]
 
     sys.stdout = out.stream
     sys.stderr = out.stream
@@ -654,6 +700,7 @@ def main():
 
     sys.stdout = sys.__stdout__
     sys.stderr = sys.__stderr__
+
 
 if __name__ == "__main__":
     main()

@@ -1,9 +1,9 @@
 #pragma once
 
 #include "sms/GC2D/ConsoleStr.hxx"
-#include "sms/JSystem/J2D/J2DPicture.hxx"
-#include "sms/JSystem/J2D/J2DWindow.hxx"
-#include "sms/JSystem/JUT/JUTColor.hxx"
+#include "J2D/J2DPicture.hxx"
+#include "J2D/J2DWindow.hxx"
+#include "JUT/JUTColor.hxx"
 #include "types.h"
 
 class TGCConsole2 {
@@ -37,7 +37,7 @@ public:
   JUtility::TColor mJuiceCardPurpleColor; // 0x00A6
   JUtility::TColor mJuiceCardPinkColor;   // 0x00AA
   u16 _07;                                // 0x00AE
-  J2DScreen *mDeathScreen;                // 0x00B0
+  J2DScreen *mMainScreen;                // 0x00B0
   u32 _B4[0x1EC / 4];                     // 0x00B4
   J2DPicture *mWaterTopPanel;             // 0x02A0
   u32 _09[0x14 / 4];                      // 0x02A4

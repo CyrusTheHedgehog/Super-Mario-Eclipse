@@ -4,7 +4,7 @@
 #include "libs/sLogging.hxx"
 #include "libs/sMath.hxx"
 #include "libs/sMemory.hxx"
-#include "sms/JSystem/JSU/JSUMemoryStream.hxx"
+#include "JSU/JSUMemoryStream.hxx"
 #include "sms/actor/Mario.hxx"
 #include "sms/camera/PolarSubCamera.hxx"
 #include "string.h"
@@ -15,7 +15,7 @@ TPlayerData::TPlayerData(TMario *player, CPolarSubCamera *camera, bool isMario)
     : mPlayer(player), mCamera(camera), mIsEMario(!isMario),
       mPlayerID(SME::Enum::Player::MARIO), mCurJump(0), mIsLongJumping(false), mIsClimbTired(false),
       mPrevCollisionType(0), mCollisionTimer(0), mClimbTiredTimer(0),
-      mSlideSpeedMultiplier(1.0f), mYoshiWaterSpeed(0.0f, 0.0f, 0.0f),
+      mSlideSpeedMultiplier(1.0f), mMaxAddVelocity(150.0f), mYoshiWaterSpeed(0.0f, 0.0f, 0.0f),
       mDefaultAttrs(player) {
 
   mParams = new TPlayerParams();
@@ -24,6 +24,8 @@ TPlayerData::TPlayerData(TMario *player, CPolarSubCamera *camera, bool isMario)
   mFluddHistory.mMainNozzle = TWaterGun::Spray;
   mFluddHistory.mSecondNozzle = TWaterGun::Hover;
   mFluddHistory.mWaterLevel = 0;
+
+  mDefaultDirtyParams = player->mDirtyParams;
 
   mCollisionFlags.mIsAirborn = false;
   mCollisionFlags.mIsCollisionUsed = false;
@@ -74,8 +76,8 @@ void TPlayerData::scalePlayerAttrs(f32 scale) {
     jumpMultiplier = 1.0f;
   }
 
-  SCALE_PARAM(mPlayer->mDeParams.mRunningMax, factor * speedMultiplier);
-  SCALE_PARAM(mPlayer->mDeParams.mDashMax, factor * speedMultiplier);
+  SCALE_PARAM(mPlayer->mDeParams.mRunningMax, factor * speedMultiplier * 1.5f);
+  SCALE_PARAM(mPlayer->mDeParams.mDashMax, factor * speedMultiplier * 1.5f);
   SCALE_PARAM(mPlayer->mDeParams.mShadowSize, scale);
   SCALE_PARAM(mPlayer->mDeParams.mHoldRadius, scale);
   SCALE_PARAM(mPlayer->mDeParams.mDamageRadius, scale);
@@ -108,7 +110,7 @@ void TPlayerData::scalePlayerAttrs(f32 scale) {
   SCALE_PARAM(mPlayer->mJumpParams.mJumpingMax, factor * jumpMultiplier);
   SCALE_PARAM(mPlayer->mJumpParams.mFenceSpeed, factor * speedMultiplier);
   SCALE_PARAM(mPlayer->mJumpParams.mFireBackVelocity, factor * jumpMultiplier);
-  SCALE_PARAM(mPlayer->mJumpParams.mBroadJumpForce, factor);
+  SCALE_PARAM(mPlayer->mJumpParams.mBroadJumpForce, factor * 1.5f);
   SCALE_PARAM(mPlayer->mJumpParams.mBroadJumpForceY, factor * jumpMultiplier);
   SCALE_PARAM(mPlayer->mJumpParams.mRotateJumpForceY, factor * jumpMultiplier);
   SCALE_PARAM(mPlayer->mJumpParams.mBackJumpForce, factor);

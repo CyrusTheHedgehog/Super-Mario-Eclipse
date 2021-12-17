@@ -6,6 +6,8 @@
 using namespace SME;
 using namespace SME::Class;
 
+constexpr f32 PauseFadeSpeed = 0.2f;
+
 // 0x802BB89C
 static void initExMusic(MSStageInfo bgm) {
   TStageParams *config = TStageParams::sStageConfig;
@@ -113,7 +115,7 @@ static void stopMusicOnStageExit(TMarioGamePad *gamepad) {
   }
   
   AudioStreamer *streamer = AudioStreamer::getInstance();
-  streamer->next(0.2f);
+  streamer->next(PauseFadeSpeed);
 
   reset__9RumbleMgrFv(gamepad);
 }
@@ -130,7 +132,7 @@ static void stopMusicOnShineGet(u32 musicID) {
 
   if ((gpMarDirector->mCollectedShine->mType & 0x10) == 0 &&
       streamer->isPlaying()) {
-    streamer->stop(0.2f);
+    streamer->stop(PauseFadeSpeed);
   }
 
   MSBgm::startBGM(musicID);
@@ -146,7 +148,7 @@ static void stopMusicOnManholeEnter(u32 musicID) {
   
   AudioStreamer *streamer = AudioStreamer::getInstance();
   if (streamer->isPlaying())
-    streamer->pause(0.2f);
+    streamer->pause(PauseFadeSpeed);
 
   MSBgm::startBGM(musicID);
 }
@@ -178,7 +180,7 @@ static void stopMusicBeforeShineCamera(CPolarSubCamera *cam, const char *demo,
 
   AudioStreamer *streamer = AudioStreamer::getInstance();
   if (streamer->isPlaying())
-    streamer->pause(0.2f);
+    streamer->pause(PauseFadeSpeed);
 }
 SME_PATCH_BL(SME_PORT_REGION(0x802981A8, 0x80290040, 0, 0), stopMusicBeforeShineCamera);
 
@@ -193,4 +195,36 @@ static void startMusicAfterShineCamera(CPolarSubCamera *cam) {
   if (streamer->isPaused())
     streamer->play();
 }
+<<<<<<< HEAD
 SME_PATCH_BL(SME_PORT_REGION(0x80297FD4, 0x8028fe6c, 0, 0), startMusicAfterShineCamera);
+=======
+SME_PATCH_BL(SME_PORT_REGION(0x80297FD4, 0, 0, 0), startMusicAfterShineCamera);
+
+static void stopMusicOnDeathExec(u32 musicID) {
+  if (!isGameEmulated()) {
+    MSBgm::startBGM(musicID);
+    return;
+  }
+
+  AudioStreamer *streamer = AudioStreamer::getInstance();
+  if (streamer->isPlaying())
+    streamer->stop(PauseFadeSpeed);
+
+  MSBgm::startBGM(musicID);
+}
+SME_PATCH_BL(SME_PORT_REGION(0x80298868, 0, 0, 0), stopMusicOnDeathExec);
+
+static void stopMusicOnGameOver(u32 musicID) {
+  if (!isGameEmulated()) {
+    MSBgm::startBGM(musicID);
+    return;
+  }
+
+  AudioStreamer *streamer = AudioStreamer::getInstance();
+  if (streamer->isPlaying())
+    streamer->stop(PauseFadeSpeed);
+
+  MSBgm::startBGM(musicID);
+}
+SME_PATCH_BL(SME_PORT_REGION(0x802988B0, 0, 0, 0), stopMusicOnGameOver);
+>>>>>>> demo/v1.1

@@ -1,7 +1,8 @@
 #include "CARD.h"
 #include "printf.h"
-#include "sms/JSystem/J2D/J2DOrthoGraph.hxx"
-#include "sms/JSystem/J2D/J2DTextBox.hxx"
+#include "J2D/J2DOrthoGraph.hxx"
+#include "J2D/J2DTextBox.hxx"
+#include "J3D/J3DVertex.hxx"
 #include "sms/talk/Talk2D2.hxx"
 #include "string.h"
 
@@ -48,11 +49,9 @@ s32 Patch::CKit::onUpdate(void *director) { // movie director
   Debug::updateDebugCollision(gpMarioAddress);
   demoHandler(gpMarioAddress);
 
-
   if (!gpMarioAddress->mAttributes.mHasFludd &&
       (gpMarioAddress->mController->mButtons.mFrameInput & TMarioGamePad::R))
     createWaterBalloonAndThrow(gpMarioAddress);
-  
   // Patch::Cheat::drawCheatText(); //currently bugged
 
   // ===== FRAME RATE ===== //

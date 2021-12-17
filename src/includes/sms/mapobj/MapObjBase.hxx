@@ -1,12 +1,14 @@
 #pragma once
 
 #include "GX.h"
-#include "sms/JSystem/J3D/J3DModel.hxx"
-#include "sms/JSystem/JSU/JSUMemoryStream.hxx"
-#include "sms/actor/HitActor.hxx"
-#include "sms/actor/LiveActor.hxx"
 #include "types.h"
 
+
+#include "J3D/J3DModel.hxx"
+#include "JSU/JSUMemoryStream.hxx"
+#include "MapObjInit.hxx"
+#include "sms/actor/HitActor.hxx"
+#include "sms/actor/LiveActor.hxx"
 
 class TMapObjBase : public TLiveActor {
 public:
@@ -17,10 +19,10 @@ public:
   virtual void loadAfter() override;
   virtual void perform(u32, JDrama::TGraphics *) override;
   virtual bool receiveMessage(THitActor *, u32) override;
-  virtual Mtx *getTakingMtx() override;
+  virtual Mtx44 *getTakingMtx() override;
   virtual void ensureTakeSituation() override;
   virtual f32 getRadiusAtY(f32) const override;
-  virtual Mtx *getRootJointMtx() const override;
+  virtual Mtx44 *getRootJointMtx() const override;
   virtual void calcRootMatrix() override;
   virtual void setGroundCollision() override;
   virtual void control() override;
@@ -32,11 +34,11 @@ public:
   virtual void changeObjSRT(const JGeometry::TVec3<f32> &,
                             const JGeometry::TVec3<f32> &,
                             const JGeometry::TVec3<f32> &);
-  virtual void changeObjMtx(Mtx *);
+  virtual void changeObjMtx(Mtx44);
   virtual void updateObjMtx();
   virtual void setUpCurrentMapCollision();
   virtual void setObjHitData(u16);
-  virtual void setModelMtx(Mtx *);
+  virtual void setModelMtx(Mtx44);
   virtual void initMapObj();
   virtual void loadBeforeInit(JSUMemoryInputStream &);
   virtual void initMapCollisionData();
@@ -61,8 +63,8 @@ public:
   void calcReflectingVelocity(const TBGCheckData *, f32,
                               JGeometry::TVec3<f32> *) const;
   void checkOnManhole();
-  void concatOnlyRotFromLeft(Mtx *, Mtx *, Mtx *);
-  void concatOnlyRotFromRight(Mtx *, Mtx *, Mtx *);
+  void concatOnlyRotFromLeft(Mtx44, Mtx44, Mtx44);
+  void concatOnlyRotFromRight(Mtx44, Mtx44, Mtx44);
   void emitAndBindScale(s32, u8, const JGeometry::TVec3<f32> *,
                         const JGeometry::TVec3<f32> &) const;
   void emitAndRotateScale(s32, u8, const JGeometry::TVec3<f32> *) const;
@@ -92,10 +94,10 @@ public:
   void initModelData();
   void initObjCollisionData();
   void initUnique();
-  void makeObjMtxRotByAxis(const JGeometry::TVec3<f32> &, f32, Mtx *) const;
-  void makeRootMtxRotX(Mtx *);
-  void makeRootMtxRotY(Mtx *);
-  void makeRootMtxRotZ(Mtx *);
+  void makeObjMtxRotByAxis(const JGeometry::TVec3<f32> &, f32, Mtx44) const;
+  void makeRootMtxRotX(Mtx44);
+  void makeRootMtxRotY(Mtx44);
+  void makeRootMtxRotZ(Mtx44);
   void makeVecToLocalZ(f32, JGeometry::TVec3<f32> *);
   bool marioHeadAttack() const;
   bool marioHipAttack() const;
@@ -132,7 +134,7 @@ public:
   static void loadHideObjInfo(JSUMemoryInputStream &, s32 *, f32 *, f32 *,
                               s32 *);
   static void makeLowerStr(const char *, char *);
-  static void makeMtxRotByAxis(const JGeometry::TVec3<f32> &, f32, Mtx *);
+  static void makeMtxRotByAxis(const JGeometry::TVec3<f32> &, f32, Mtx44);
   static bool marioIsOn(const TLiveActor *);
   static void moveJoint(J3DJoint *, f32, f32, f32);
   static void *newAndInitBuildingCollisionMove(int, TLiveActor *);
@@ -148,12 +150,16 @@ public:
                                        const JGeometry::TVec3<f32> &, f32, f32);
   static bool waterHitPlane(THitActor *);
 
-  char *mRegisterName; // 0x00F4
-  u32 _00;             // 0x00F8
-  u16 mState;          // 0x00FC
-  u16 _01;             // 0x00FE
-  u32 _02;             // 0x0100
-  s32 mStateTimer;     // 0x0104
-  u32 _03[0x2C / 4];   // 0x0108
-  u32 mMapObjID;       // 0x0134
+  char *mRegisterName;                    // 0x00F4
+  u32 _00;                                // 0x00F8
+  u16 mState;                             // 0x00FC
+  u16 _01;                                // 0x00FE
+  u16 mSoundIDIndex;                      // 0x0100
+  s32 mStateTimer;                        // 0x0104
+  u32 _03;                                // 0x0108
+  JGeometry::TVec3<f32> mInitialPosition; // 0x010C
+  JGeometry::TVec3<f32> mInitialRotation; // 0x0118
+  u32 _124[3];
+  ObjData *mObjData; // 0x0130
+  u32 mMapObjID;     // 0x0134
 };

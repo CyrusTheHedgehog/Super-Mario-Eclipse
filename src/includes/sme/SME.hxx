@@ -13,18 +13,19 @@
 #include "CheatHandler.hxx"
 #include "Globals.hxx"
 #include "Player.hxx"
+#include "KeyCode.hxx"
 #include "funcs.hxx"
 #include "stage/FileUtils.hxx"
 
 #include "params/MarioParams.hxx"
 #include "params/StageParams.hxx"
 
+#include "J2D/J2DOrthoGraph.hxx"
+#include "JGeometry.hxx"
 #include "MTX.h"
 #include "OS.h"
 #include "defines.h"
 #include "macros.h"
-#include "sms/JSystem/J2D/J2DOrthoGraph.hxx"
-#include "sms/JSystem/JGeometry.hxx"
 #include "sms/SMS.hxx"
 #include "sms/enemy/EnemyMario.hxx"
 #include "sms/game/Conductor.hxx"
@@ -50,10 +51,8 @@
 #if defined(SME_BUILD_KURIBO)
 #define SME_PATCH_B(source, target) pp::PatchB(source, target)
 #define SME_PATCH_BL(source, target) pp::PatchBL(source, target)
-#define SME_WRITE_8(source, value)                                             \
-  pp::Patch8(source, value)
-#define SME_WRITE_16(source, value)                                            \
-  pp::Patch16(source, value)
+#define SME_WRITE_8(source, value) pp::Patch8(source, value)
+#define SME_WRITE_16(source, value) pp::Patch16(source, value)
 #define SME_WRITE_32(source, value) pp::Patch32(source, value)
 #elif defined(SME_BUILD_KAMEK) || defined(SME_BUILD_KAMEK_INLINE)
 #define SME_PATCH_B(source, target) kmBranch(source, target)
@@ -144,8 +143,6 @@ namespace Collision {
 void checkIsGlideBounce(TMario *player);
 u16 checkIsRestoreTypeNoFallDamage(TBGCheckData *floor);
 u32 updateCollisionContext(TMario *player);
-u16 masterGroundCollisionHandler(TBGCheckData *colTriangle);
-u32 masterAllCollisionHandler(TMario *player);
 
 } // namespace Collision
 
@@ -177,11 +174,10 @@ bool hasWaterCardOpen();
 bool canCollectFluddItem(TMario *player);
 void sprayGoopMap(TPollutionManager *gpPollutionManager, f32 x, f32 y, f32 z,
                   f32 r);
-bool canCleanSeals(TWaterManager *gpWaterManager);
+bool canCleanSeals(TModelWaterManager *gpWaterManager);
 TWaterGun *bindFluddtojoint();
 void checkExecWaterGun(TWaterGun *fludd);
 void killTriggerNozzle();
-void spamHoverWrapper(TNozzleTrigger *nozzle, u32 r4, TWaterEmitInfo *emitInfo);
 bool checkAirNozzle();
 
 } // namespace Fludd
@@ -235,7 +231,6 @@ void getClimbingAnimSpd(TMario *player, TMario::Animation anim, f32 speed);
 void scaleHangSpeed(TMario *player);
 void checkGraffitiAffected(TMario *player);
 void rescaleHeldObj(Mtx holderMatrix, Mtx destMatrix);
-void manageCustomJumps(TMario *player);
 void checkYSpdForTerminalVelocity();
 void normJumpMultiplier();
 f32 checkGroundSpeedLimit();

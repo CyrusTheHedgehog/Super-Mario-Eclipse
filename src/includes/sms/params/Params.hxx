@@ -1,29 +1,31 @@
 #pragma once
 
-#include "BaseParam.hxx"
-#include "sms/JSystem/JDrama.hxx"
-#include "sms/JSystem/JKR/JKRMemArchive.hxx"
-#include "sms/JSystem/JSU/JSUMemoryStream.hxx"
-#include "types.h"
 #include "macros.h"
+#include "types.h"
+
+#include "BaseParam.hxx"
+#include "JKR/JKRMemArchive.hxx"
+#include "JSU/JSUMemoryStream.hxx"
 
 class TParams {
 public:
-  TParams() : _00(0), mBaseParam(nullptr) {}
+  TParams() : mPrmPath(nullptr), mBaseParam(nullptr) {}
   ~TParams() {}
 
-  void finalize();
+  static void finalize();
+  
   void init();
   void load(const char *);
   void load(JSUMemoryInputStream &);
 
-  u32 _00;
+  char *mPrmPath;
   TBaseParam *mBaseParam;
 
   static JKRMemArchive *mArc;
   static JKRMemArchive *mSceneArc;
 };
 
+// sizeof = 0x14
 template <typename T> class TParamT : public TBaseParam {
   T mValue;
 
@@ -34,9 +36,9 @@ public:
   T get() const { return mValue; }
   void set(T param) { mValue = param; }
 
-  void load(JSUMemoryInputStream &stream) {
+  void load(JSUMemoryInputStream &stream) override {
     u32 fakeit;
-    SME_FROM_GPR(29, fakeit); //Hack to keep r29 from being used..
+    SME_FROM_GPR(29, fakeit); // Hack to keep r29 from being used..
 
     u32 buffer;
     stream.read(&buffer, 4);

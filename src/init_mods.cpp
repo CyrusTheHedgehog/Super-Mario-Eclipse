@@ -1,8 +1,8 @@
 #include "printf.h"
-#include "sms/JSystem/JDrama.hxx"
-#include "sms/JSystem/JKR/JKRDecomp.hxx"
-#include "sms/JSystem/JKR/JKRHeap.hxx"
-#include "sms/JSystem/JKR/JKRMemArchive.hxx"
+#include "JDrama/JDRNameRef.hxx"
+#include "JKR/JKRDecomp.hxx"
+#include "JKR/JKRHeap.hxx"
+#include "JKR/JKRMemArchive.hxx"
 #include "stdlib.h"
 
 #include "SME.hxx"
@@ -132,6 +132,9 @@ static void resetGlobalValues() {
 
 static bool isMario = true;
 
+extern void patches_staticResetter();
+extern void objects_staticResetter();
+
 // 0x802998B4
 TMarDirector *Patch::Init::initFileMods() {
   TMarDirector *director;
@@ -140,8 +143,6 @@ TMarDirector *Patch::Init::initFileMods() {
   TMarioGamePad *gpGamePad = gpApplication.mGamePad1;
 
 #if defined(SME_DEMO)
-// demo
-  SME_DEBUG_LOG("...");
   Enum::Player characterID = TGlobals::sCharacterIDList[0];
   if (gIsSwappingWarp) {
     if (isMario) {
@@ -161,14 +162,14 @@ TMarDirector *Patch::Init::initFileMods() {
 
 
   resetGlobalValues();
+  objects_staticResetter();
+  patches_staticResetter();
   TGlobals::clearAllPlayerParams();
   TStageParams::sStageConfig->reset();
   TStageParams::sStageConfig->load(Util::getStageName(&gpApplication));
 
-  TFlagManager::smInstance->setBool(true, 0x10060);
-  TFlagManager::smInstance->setBool(true, 0x10061);
-  TFlagManager::smInstance->setBool(true, 0x10063);
-  TFlagManager::smInstance->setBool(true, 0x1038F);
+  TFlagManager::smInstance->setBool(true, 0x1038F); // Yosh
+  TFlagManager::smInstance->Type4Flag.mGoldCoinCount = 0;
 
 
 #ifdef CHARACTER_SELECT
@@ -296,6 +297,11 @@ static void initFludd(TMario *player, TPlayerData *params) {
       player->mFludd->mNozzleList[(u8)player->mFludd->mCurrentNozzle]
           ->mMaxWater;
 }
+
+static void initFluddInLoadAfter(TWaterGun *fludd) {
+  fludd->mNozzleList[4]->mDamageLoss = 250;
+}
+SME_PATCH_B(SME_PORT_REGION(0x8026A3B8, 0, 0, 0), initFluddInLoadAfter);
 
 static void initMario(TMario *player, bool isMario) {
   TStageParams *config = TStageParams::sStageConfig;

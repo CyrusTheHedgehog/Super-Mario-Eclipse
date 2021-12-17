@@ -5,9 +5,9 @@
 #include "types.h"
 
 #include "funcs.hxx"
-#include "sms/JSystem/JGeometry.hxx"
-#include "sms/JSystem/JSU/JSUMemoryStream.hxx"
-#include "sms/JSystem/JUT/JUTColor.hxx"
+#include "JGeometry.hxx"
+#include "JSU/JSUMemoryStream.hxx"
+#include "JUT/JUTColor.hxx"
 #include "sms/actor/Mario.hxx"
 #include "sms/camera/PolarSubCamera.hxx"
 
@@ -213,6 +213,7 @@ public:
   s32 mCollisionTimer;
   s32 mClimbTiredTimer;
   f32 mSlideSpeedMultiplier;
+  f32 mMaxAddVelocity;
 
   struct {
     bool mIsColliding : 1;
@@ -230,6 +231,7 @@ public:
   JGeometry::TVec3<f32> mYoshiWaterSpeed;
   FluddHistory mFluddHistory;
   ParamHistory mDefaultAttrs;
+  TMario::TDirtyParams mDefaultDirtyParams;
 };
 
 } // namespace SME::Class

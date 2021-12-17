@@ -1,14 +1,16 @@
 #include "GX.h"
+#include "OS.h"
 
+#include "J2D/J2DPrint.hxx"
+#include "JKR/JKRFileLoader.hxx"
 #include "sms/GC2D/ConsoleStr.hxx"
-#include "sms/JSystem/JKR/JKRFileLoader.hxx"
 #include "sms/actor/Mario.hxx"
+#include "sms/mapobj/MapObjNormalLift.hxx"
 #include "sms/mapobj/MapObjTree.hxx"
-#include "sms/JSystem/J2D/J2DPrint.hxx"
 
 #include "SME.hxx"
-#include "macros.h"
 #include "defines.h"
+#include "macros.h"
 
 constexpr f32 DrawDistance = 300000.0f * 100.0f;
 
@@ -33,6 +35,17 @@ u32 SME::Patch::Fixes::patchYStorage() {
 
   return 0;
 }
+
+void patchWaterDownWarp(f32 y) {
+  TMario *player;
+  SME_FROM_GPR(31, player);
+
+  if (player->mFloorTriangleWater == player->mFloorTriangle)
+    changePlayerStatus__6TMarioFUlUlb(player, TMario::State::FALL, 0, false);
+  else
+    player->mPosition.y = y;
+}
+SME_PATCH_BL(SME_PORT_REGION(0x80272710, 0, 0, 0), patchWaterDownWarp);
 
 static bool canDiePlane(f32 floorY) {
   TMario *player;
@@ -126,11 +139,26 @@ static void scaleDrawDistanceNPC(f32 x, f32 y, f32 near, f32 far) {
 }
 SME_PATCH_BL(SME_PORT_REGION(0x8020A2A4, 0x80202188, 0, 0), scaleDrawDistanceNPC);
 
-static bool scaleDrawDistanceCamera(CPolarSubCamera *cam) {
-  JSGSetProjectionFar__Q26JDrama7TCameraFf(cam, DrawDistance);
+static f32 sLastFactor = 1.0f;
+static bool cameraQOLFixes(CPolarSubCamera *cam) {
+  JSGSetProjectionFar__Q26JDrama7TCameraFf(cam, DrawDistance); // Draw Distance
+
+  f32 factor = Math::scaleLinearAtAnchor<f32>(
+      gpMarioAddress->mForwardSpeed / 100.0f, 0.5f, 1.0f);
+
+  factor = Math::lerp<f32>(sLastFactor, factor, 0.01f);
+
+  if (factor > 1.0f &&
+      gpMarioAddress->mState == static_cast<u32>(TMario::State::DIVESLIDE)) {
+    sLastFactor = factor;
+    reinterpret_cast<f32 *>(cam)[0x48 / 4] *= factor;
+  } else {
+    sLastFactor = Math::lerp<f32>(sLastFactor, 1.0f, 0.01f);
+    reinterpret_cast<f32 *>(cam)[0x48 / 4] *= sLastFactor;
+  }
   return cam->isNormalDeadDemo();
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80023828, 0x800238a4, 0, 0), scaleDrawDistanceCamera);
+SME_PATCH_BL(SME_PORT_REGION(0x80023828, 0x800238a4, 0, 0), cameraQOLFixes);
 
 // READY GO TEXT PATCH FOR THIS BULLSHIT THING DADDY NINTENDO DID
 SME_WRITE_32(SME_PORT_REGION(0x80171C30, 0x80167a40, 0, 0), 0x2C000005);
@@ -157,7 +185,7 @@ static void normalizeHoverSlopeSpeed(f32 floorPos) {
   const f32 slopeStrength = PSVECDotProduct(&up, &floorNormal);
   if (slopeStrength < 0.0f)
     return;
-    
+
   const f32 lookAtRatio =
       Math::Vector3::lookAtRatio(playerForward, floorNormal);
 
@@ -243,9 +271,10 @@ static void _capturePrintPos(J2DPane *pane, int x, int y) {
   sPrintY = y;
   pane->makeMatrix(x, y);
 }
-//SME_PATCH_BL(SME_PORT_REGION(0x802d0bec, 0, 0, 0), _capturePrintPos);
+// SME_PATCH_BL(SME_PORT_REGION(0x802d0bec, 0, 0, 0), _capturePrintPos);
 
-static void cullJ2DPrint(J2DPrint *printer, int unk_0, int unk_1, u8 unk_2, const char *formatter, ...) {
+static void cullJ2DPrint(J2DPrint *printer, int unk_0, int unk_1, u8 unk_2,
+                         const char *formatter, ...) {
   constexpr f32 fontWidth = 16;
 
   va_list vargs;
@@ -255,26 +284,199 @@ static void cullJ2DPrint(J2DPrint *printer, int unk_0, int unk_1, u8 unk_2, cons
 
   va_end(vargs);
 
-  if ((sPrintX > 0 && (sPrintX + strlen(msg)) < SME::TGlobals::getScreenWidth()) ||
+  if ((sPrintX > 0 &&
+       (sPrintX + strlen(msg)) < SME::TGlobals::getScreenWidth()) ||
       strchr(msg, '\n') != nullptr)
     printer->print(0, 0, unk_2, formatter, msg);
 
   String culledMsg(msg, 1024);
 
   f32 cullL = Max((f32(-sPrintX) / fontWidth) - 2.0f, 0);
-  f32 cullR = Max(((f32(-sPrintX) + (f32(culledMsg.size()) * fontWidth)) / SME::TGlobals::getScreenWidth()) + 2.0f, cullL);
+  f32 cullR = Max(((f32(-sPrintX) + (f32(culledMsg.size()) * fontWidth)) /
+                   SME::TGlobals::getScreenWidth()) +
+                      2.0f,
+                  cullL);
 
   culledMsg.substr(&culledMsg, size_t(cullL), size_t(cullR));
   culledMsg.append('\0');
 
   printer->print(int(cullL * fontWidth), 0, unk_2, formatter, culledMsg.data());
 }
-//SME_PATCH_BL(SME_PORT_REGION(0x802d0c20, 0, 0, 0), cullJ2DPrint);
+// SME_PATCH_BL(SME_PORT_REGION(0x802d0c20, 0, 0, 0), cullJ2DPrint);
+
+static Mtx44 sDrawMtx;
+
+static void captureTextboxDrawMtx(Mtx44 mtx, u8 index) {
+  PSMTXCopy(mtx, sDrawMtx);
+  GXLoadPosMtxImm(mtx, index);
+}
+SME_PATCH_BL(SME_PORT_REGION(0x802d0bf8, 0, 0, 0), captureTextboxDrawMtx);
+
+static void maybePrintChar(JUTFont *font, f32 x, f32 y, f32 w, f32 h, int ascii,
+                           bool unk_1) {
+  const int offset = static_cast<int>(
+      (SME::TGlobals::getScreenToFullScreenRatio() - 1.0f) * 600.0f);
+  const int fontWidth = font->getWidth();
+
+  int absX = static_cast<int>(sDrawMtx[0][3] + x);
+  int absY = static_cast<int>(sDrawMtx[1][3] + y);
+
+  if (absX + fontWidth > -offset && absX < SME::TGlobals::getScreenWidth())
+    font->drawChar_scale(x, y, w, h, ascii, unk_1);
+}
+SME_PATCH_BL(SME_PORT_REGION(0x802cec2c, 0, 0, 0), maybePrintChar);
+
+static OSStopwatch stopwatch;
+static bool sInitialized = false;
+static bool sIsWaiting = false;
+static OSTick sLastStart = 0;
+static void J2D_BenchMarkPrint(J2DTextBox *printer, int x, int y) {
+  if (!sInitialized) {
+    OSInitStopwatch(&stopwatch, "J2DPrintTest");
+    sInitialized = true;
+  }
+
+  if (!sIsWaiting) {
+    sLastStart = OSGetTick();
+    sIsWaiting = true;
+  }
+
+  OSStartStopwatch(&stopwatch);
+  printer->draw(x, y);
+  OSStopStopwatch(&stopwatch);
+
+  if (sIsWaiting && OSTicksToSeconds(OSGetTick() - sLastStart) > 5.0f) {
+    OSDumpStopwatch(&stopwatch);
+  }
+}
+// SME_PATCH_BL(SME_PORT_REGION(0x80144010, 0, 0, 0), J2D_BenchMarkPrint);
 
 #endif
 
 // Title Screen Never Fades to THP
 SME_WRITE_32(SME_PORT_REGION(0x8016D53C, 0x801628ac, 0, 0), 0x48000344);
 
-// Load msound.aaf from AudioRes folder (NTSC-U) [Xayrga/JoshuaMK] 
-//SME_WRITE_32(SME_PORT_REGION(0x80014F9C, 0, 0, 0), 0x60000000);
+// Load msound.aaf from AudioRes folder (NTSC-U) [Xayrga/JoshuaMK]
+SME_WRITE_32(SME_PORT_REGION(0x80014F9C, 0, 0, 0), 0x60000000);
+
+static bool sIs100ShineSpawned = false;
+static bool is100CoinShine(TFlagManager *manager, u32 id) {
+  if (!sIs100ShineSpawned && manager->getFlag(id) > 99) {
+    sIs100ShineSpawned = true;
+    return true;
+  }
+  return false;
+}
+SME_PATCH_BL(SME_PORT_REGION(0x801BED3C, 0, 0, 0), is100CoinShine);
+SME_WRITE_32(SME_PORT_REGION(0x801BED40, 0, 0, 0), 0x2C030001);
+
+static void *loadFromGlobalAndScene(const char *mdl, u32 unk_0,
+                                    const char *path) {
+  u32 **sdlModel = reinterpret_cast<u32 **>(
+      loadModelData__16TModelDataKeeperFPCcUlPCc(mdl, unk_0, path));
+  if (*sdlModel == nullptr) {
+    delete sdlModel;
+    sdlModel =
+        reinterpret_cast<u32 **>(loadModelData__16TModelDataKeeperFPCcUlPCc(
+            mdl, unk_0, "/common/mapobj"));
+  }
+  return sdlModel;
+}
+SME_PATCH_BL(SME_PORT_REGION(0x8021CD34, 0, 0, 0), loadFromGlobalAndScene);
+
+void checkInstantReset_NormalLift(u32 *railflags) {
+  s16 *mRailObj;
+  SME_FROM_GPR(31, mRailObj);
+
+  u32 flag = railflags[2];
+  if (flag & 0x2000) {
+    mRailObj[0x14A / 2] = 0;
+  } else {
+    mRailObj[0x14A / 2] = 180;
+  }
+}
+
+void checkInstantReset_RailObj(s16 *mRailObj, u32 *railflags) {
+  u32 flag = railflags[2];
+  if (flag & 0x2000) {
+    mRailObj[0x14A / 2] = 0;
+  } else {
+    mRailObj[0x14A / 2] = 180;
+  }
+}
+SME_PATCH_BL(SME_PORT_REGION(0x801F0B90, 0, 0, 0),
+             checkInstantReset_NormalLift);
+SME_PATCH_BL(SME_PORT_REGION(0x801F1054, 0, 0, 0), checkInstantReset_RailObj);
+
+void checkResetToNode(TNormalLift *lift) {
+  TGraphWeb *graph = lift->mGraphTracer->mGraph;
+  TRailNode *node;
+  {
+    s32 nodeIdx = lift->mGraphTracer->mPreviousNode;
+    node = reinterpret_cast<TRailNode *>(graph->mNodes[nodeIdx << 2]);
+  }
+  if (node->mFlags & 0x2000) {
+    lift->mPosition.set(
+        graph->getNearestPosOnGraphLink(lift->mInitialPosition));
+    lift->mRotation.set(lift->mInitialRotation);
+    lift->mRailStatus = 0;
+    lift->mContextTimer = 180;
+    lift->mLastRailStatus = 1;
+    {
+      int idx = graph->findNearestNodeIndex(lift->mPosition, 0xFFFFFFFF);
+      lift->mGraphTracer->setTo(idx);
+    }
+    lift->readRailFlag();
+  } else {
+    lift->resetPosition();
+  }
+}
+SME_PATCH_BL(SME_PORT_REGION(0x801EFBDC, 0, 0, 0), checkResetToNode);
+SME_WRITE_32(SME_PORT_REGION(0x801EFBE0, 0, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801EFBE4, 0, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801EFBE8, 0, 0, 0), 0x60000000);
+SME_PATCH_BL(SME_PORT_REGION(0x801F13FC, 0, 0, 0), checkResetToNode);
+SME_WRITE_32(SME_PORT_REGION(0x801F1400, 0, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801F1404, 0, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801F1408, 0, 0, 0), 0x60000000);
+
+f32 enhanceWaterCheck(f32 x, f32 y, f32 z, TMario *player) {
+  SME_FROM_GPR(29, player);
+
+  const TBGCheckData **tri =
+      const_cast<const TBGCheckData **>(&player->mFloorTriangleWater);
+
+  const TMapCollisionData *mapCol = gpMapCollisionData;
+  {
+    f32 yPos = mapCol->checkGround(x, player->mCeilingAbove - 10.0f, z, 0, tri);
+    if (*tri && (*tri)->mCollisionType > 255 && (*tri)->mCollisionType < 260)
+      return yPos;
+  }
+
+  return mapCol->checkGround(x, y, z, 0, tri);
+}
+SME_PATCH_BL(SME_PORT_REGION(0x8024F12C, 0, 0, 0), enhanceWaterCheck);
+
+u32 clampRotation(TLiveActor *actor) {
+  JGeometry::TVec3<f32> &rot = actor->mRotation;
+
+  auto clampPreserve = [](f32 rotation) {
+    if (rotation > 360.0f)
+      rotation -= 360.0f;
+    else if (rotation < -360.0f)
+      rotation += 360.0f;
+    return rotation;
+  };
+
+  rot.x = clampPreserve(rot.x);
+  rot.y = clampPreserve(rot.y);
+  rot.z = clampPreserve(rot.z);
+
+  return actor->mStateFlags.asU32;
+}
+SME_PATCH_BL(SME_PORT_REGION(0x80217EDC, 0, 0, 0), clampRotation);
+SME_WRITE_32(SME_PORT_REGION(0x80217EE0, 0, 0, 0), 0x70600201);
+
+
+// STATIC RESETTER
+void patches_staticResetter() { sIs100ShineSpawned = false; }
