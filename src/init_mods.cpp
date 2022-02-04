@@ -301,7 +301,7 @@ static void initFludd(TMario *player, TPlayerData *params) {
 static void initFluddInLoadAfter(TWaterGun *fludd) {
   fludd->mNozzleList[4]->mDamageLoss = 250;
 }
-SME_PATCH_B(SME_PORT_REGION(0x8026A3B8, 0, 0, 0), initFluddInLoadAfter);
+SME_PATCH_B(SME_PORT_REGION(0x8026A3B8, 0x80262144, 0, 0), initFluddInLoadAfter);
 
 static void initMario(TMario *player, bool isMario) {
   TStageParams *config = TStageParams::sStageConfig;

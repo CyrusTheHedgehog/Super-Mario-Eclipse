@@ -341,7 +341,7 @@ static void burnPlayer(TMario *player, u8 flags) {
   changePlayerStatus__6TMarioFUlUlb(player, 0x208B7, 1, false);
   player->mSpeed.y += 20.0f;
   emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f(
-      *(u32 *)SME_PORT_REGION(0x8040E150, 0, 0, 0), 6,
+      *(u32 *)SME_PORT_REGION(0x8040E150, 0x80405818, 0, 0), 6,
       reinterpret_cast<Vec *>(&player->mPosition), 0, nullptr);
   if (gpMSound->gateCheck(0x1813)) {
     MSoundSESystem::MSoundSE::startSoundActor(
@@ -393,8 +393,8 @@ static void slipperyCatchingSoundCheck(u32 sound, const Vec *pos, u32 unk_1,
   MSoundSESystem::MSoundSE::startSoundActor(sound, pos, unk_1, out, unk_2,
                                             unk_3);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8025932C, 0, 0, 0), slipperyCatchingSoundCheck);
-SME_WRITE_32(SME_PORT_REGION(0x802596C0, 0, 0, 0), 0x60000000);
+SME_PATCH_BL(SME_PORT_REGION(0x8025932C, 0x802510b8, 0, 0), slipperyCatchingSoundCheck);
+SME_WRITE_32(SME_PORT_REGION(0x802596C0, 0x8025144c, 0, 0), 0x60000000);
 
 #define EXPAND_WARP_SET(base)                                                  \
   (base) : case ((base) + 10) : case ((base) + 20) : case ((base) + 30)
@@ -604,7 +604,7 @@ static TBGCheckData *masterGroundCollisionHandler() {
   }
   return floorCol;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80250C9C, 0, 0, 0),
+SME_PATCH_BL(SME_PORT_REGION(0x80250C9C, 0x80248328, 0, 0),
              masterGroundCollisionHandler);
 
 // 0x8025059C
@@ -637,8 +637,8 @@ static u32 masterAllCollisionHandler(TMario *player) {
   }
   return player->mState;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8025059C, 0, 0, 0), masterAllCollisionHandler);
-SME_WRITE_32(SME_PORT_REGION(0x802505A0, 0, 0, 0), 0x546004E7);
+SME_PATCH_BL(SME_PORT_REGION(0x8025059C, 0x80248328, 0, 0), masterAllCollisionHandler);
+SME_WRITE_32(SME_PORT_REGION(0x802505A0, 0x8024832c, 0, 0), 0x546004E7);
 
 #undef EXPAND_WARP_SET
 #undef EXPAND_WARP_CATEGORY

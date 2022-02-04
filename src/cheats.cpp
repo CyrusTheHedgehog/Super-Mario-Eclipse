@@ -64,4 +64,4 @@ static void isLevelSelectAvailable() {
     context = TGlobals::isDebugMode() ? 9 : 4;
   gpApplication.mContext = context;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802A6794, 0, 0, 0), isLevelSelectAvailable);
+// SME_PATCH_BL(SME_PORT_REGION(0x802A6794, 0x8029e6ec, 0, 0), isLevelSelectAvailable);

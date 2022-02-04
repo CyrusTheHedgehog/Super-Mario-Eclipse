@@ -159,4 +159,4 @@ static void setEmitPrm() {
   TWaterBalloon::sEmitInfo = new TWaterEmitInfo("/mario/waterballoon/waterballoon.prm");
   TParams::finalize();
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802B8DC8, 0, 0, 0), setEmitPrm);
+SME_PATCH_BL(SME_PORT_REGION(0x802B8DC8, 0x802b0d98, 0, 0), setEmitPrm);

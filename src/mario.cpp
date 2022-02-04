@@ -636,7 +636,7 @@ static void doProcessJumpState(TMario *player) {
 
   jumpMain__6TMarioFv(player);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80250138, 0, 0, 0), doProcessJumpState);
+SME_PATCH_BL(SME_PORT_REGION(0x80250138, 0x80247ec4, 0, 0), doProcessJumpState);
 
 static f32 calcJumpPower(TMario *player, f32 factor, f32 base, f32 jumpPower) {
   Class::TPlayerData *playerData = TGlobals::getPlayerData(player);
@@ -719,7 +719,7 @@ static void manageCustomJumps(TMario *player) {
   }
   stateMachine__6TMarioFv(player);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8024E02C, 0, 0, 0), manageCustomJumps);
+SME_PATCH_BL(SME_PORT_REGION(0x8024E02C, 0x80245db8, 0, 0), manageCustomJumps);
 
 static void setJumpOrLongJump(TMario *player, u32 state, u32 unk_0) {
   constexpr u32 LongJumpSpecifier = TMarioGamePad::Buttons::Z;
@@ -1052,7 +1052,7 @@ SME_WRITE_32(SME_PORT_REGION(0x80256D0C, 0x8024ea98, 0, 0), 0xEC0100BC);
 static void dynamicFallDamage(TMario *player, int dmg, int type, int emitcount,
                               int tremble) {
 #define floorDamageExec__6TMarioFiiii                                          \
-  ((void (*)(TMario *, int, int, int, int))SME_PORT_REGION(0x8024303C, 0, 0, 0))
+  ((void (*)(TMario *, int, int, int, int))SME_PORT_REGION(0x8024303C, 0x8023acec, 0, 0))
 
   Class::TPlayerData *playerData = TGlobals::getPlayerData(player);
 
@@ -1068,13 +1068,13 @@ static void dynamicFallDamage(TMario *player, int dmg, int type, int emitcount,
 
 #undef floorDamageExec__6TMarioFiiii
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8024C73C, 0, 0, 0), dynamicFallDamage);
+SME_PATCH_BL(SME_PORT_REGION(0x8024C73C, 0x80246bb4, 0, 0), dynamicFallDamage);
 
 static u32 preventDebuggingDeath(TMario *player) {
   extern bool gInXYZMode;
   return gInXYZMode ? 0x224E0 : player->mState; // Spoof non dying value
 };
-SME_PATCH_BL(SME_PORT_REGION(0x80243110, 0, 0, 0), preventDebuggingDeath);
+SME_PATCH_BL(SME_PORT_REGION(0x80243110, 0x8023ae9c, 0, 0), preventDebuggingDeath);
 
 // ------------ //
 // Shadow Mario //

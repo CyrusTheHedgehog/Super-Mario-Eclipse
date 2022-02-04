@@ -234,7 +234,7 @@ void fluddEmitModWrapper(TNozzleTrigger *nozzle, u32 r4,
 
   virtualFunc(nozzle, r4, emitInfo);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8026C018, 0, 0, 0), fluddEmitModWrapper);
+SME_PATCH_BL(SME_PORT_REGION(0x8026C018, 0x80263da4, 0, 0), fluddEmitModWrapper);
 
 // 0x80262580
 // extern -> SME.cpp

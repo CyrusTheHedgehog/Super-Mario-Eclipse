@@ -17,10 +17,10 @@ static constexpr size_t OBJNewCount = 3;
 
 static constexpr size_t LoadAddrTableSize = 2;
 static u16 *sObjLoadAddrTable[LoadAddrTableSize][2]{
-    {(u16 *)SME_PORT_REGION(0x801B1772, 0, 0, 0),
-     (u16 *)SME_PORT_REGION(0x801B178A, 0, 0, 0)},
-    {(u16 *)SME_PORT_REGION(0x801B1AF2, 0, 0, 0),
-     (u16 *)SME_PORT_REGION(0x801B1AFA, 0, 0, 0)}};
+    {(u16 *)SME_PORT_REGION(0x801B1772, 0x801a962A, 0, 0),
+     (u16 *)SME_PORT_REGION(0x801B178A, 0x801a9642, 0, 0)},
+    {(u16 *)SME_PORT_REGION(0x801B1AF2, 0x801a99AA, 0, 0),
+     (u16 *)SME_PORT_REGION(0x801B1AFA, 0x801a99b2, 0, 0)}};
 
 static ObjData *sObjDataTableNew[OBJDataTableSize + OBJNewCount];
 
@@ -57,6 +57,6 @@ JDrama::TNameRef *makeExtendedMapObjFromRef(TMarNameRefGen *nameGen,
 
   return nullptr;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8029E120, 0, 0, 0), makeExtendedMapObjFromRef);
+SME_PATCH_BL(SME_PORT_REGION(0x8029E120, 0x80295ffc, 0, 0), makeExtendedMapObjFromRef);
 
 void objects_staticResetter() { sWaterBalloon = nullptr; }

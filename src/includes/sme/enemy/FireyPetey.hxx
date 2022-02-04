@@ -3,6 +3,7 @@
 #include "types.h"
 #include "sms/enemy/BossPakkun.hxx"
 #include "sms/actor/SpineBase.hxx"
+#include "sms/enemy/Kukku.hxx"
 
 class TNerveFPSleep : public TNerveBase<TLiveActor>
 {
@@ -58,8 +59,10 @@ class TFireyPetey : public TBossPakkun
 public:
     TFireyPetey(const char *);
     virtual ~TFireyPetey();
+    virtual void perform(u32, JDrama::TGraphics *) override;
     virtual void init(TLiveManager *) override;
     virtual bool receiveMessage(THitActor *, u32) override;
 
     short numTornados;
+    TKukkuBall *mKukkuBall;
 };

@@ -20262,4 +20262,5 @@
 #define CLBEaseOutInbetween_s ((int(*)(...))0x8002d990)
 #define CLBLinearInbetween_f ((f32(*)(...))0x80021198)
 #define sqrt__Q29JGeometry8TUtil_f ((int(*)(...))0x800067e8)
+#define emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f ((int(*)(...))0x8027ffac)
 #endif

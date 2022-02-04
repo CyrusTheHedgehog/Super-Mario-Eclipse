@@ -195,10 +195,7 @@ static void startMusicAfterShineCamera(CPolarSubCamera *cam) {
   if (streamer->isPaused())
     streamer->play();
 }
-<<<<<<< HEAD
 SME_PATCH_BL(SME_PORT_REGION(0x80297FD4, 0x8028fe6c, 0, 0), startMusicAfterShineCamera);
-=======
-SME_PATCH_BL(SME_PORT_REGION(0x80297FD4, 0, 0, 0), startMusicAfterShineCamera);
 
 static void stopMusicOnDeathExec(u32 musicID) {
   if (!isGameEmulated()) {
@@ -212,7 +209,7 @@ static void stopMusicOnDeathExec(u32 musicID) {
 
   MSBgm::startBGM(musicID);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80298868, 0, 0, 0), stopMusicOnDeathExec);
+SME_PATCH_BL(SME_PORT_REGION(0x80298868, 0x80290700, 0, 0), stopMusicOnDeathExec);
 
 static void stopMusicOnGameOver(u32 musicID) {
   if (!isGameEmulated()) {
@@ -226,5 +223,4 @@ static void stopMusicOnGameOver(u32 musicID) {
 
   MSBgm::startBGM(musicID);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802988B0, 0, 0, 0), stopMusicOnGameOver);
->>>>>>> demo/v1.1
+SME_PATCH_BL(SME_PORT_REGION(0x802988B0, 0x80290748, 0, 0), stopMusicOnGameOver);

@@ -4,8 +4,10 @@
 #include "sms/JSystem/JGeometry.hxx"
 #include "sms/actor/SpineEnemy.hxx"
 #include "sms/actor/HitActor.hxx"
-#include "sms/JSystem/JDrama.hxx"
+#include "JDrama/JDRGraphics.hxx"
+#include "JDrama/JDRActor.hxx"
 #include "sms/actor/SpineBase.hxx"
+#include "JGeometry.hxx"
 
 
 class TBPTornado;
@@ -20,7 +22,6 @@ protected:
         TBPPolDrop(TBossPakkun *parentPakkun, char *name);
         virtual void perform(u32, JDrama::TGraphics *) override;
         void move();
-
         TBossPakkun *parentPakkun; //0x0068
         f32 _00[3];                //0x006c
         u32 _01[4];                //0x0078

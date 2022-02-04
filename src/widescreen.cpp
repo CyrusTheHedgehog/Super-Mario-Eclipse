@@ -556,7 +556,7 @@ static void scaleUnderWaterMask(Mtx mtx, f32 x, f32 y, f32 z) {
   x *= (reinterpret_cast<f32 *>(camera)[0x48 / 4] / 50.0f);
   PSMTXScale(mtx, x, y, z);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x801ea96c, 0, 0, 0), scaleUnderWaterMask);
+SME_PATCH_BL(SME_PORT_REGION(0x801ea96c, 0x801e2844, 0, 0), scaleUnderWaterMask);
 
 #endif
 

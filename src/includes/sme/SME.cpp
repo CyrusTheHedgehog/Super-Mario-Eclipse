@@ -497,7 +497,7 @@ SME_WRITE_32(SME_PORT_REGION(0x802B5E8C, 0x802ade20, 0, 0), 0x38600001);
 SME_WRITE_32(SME_PORT_REGION(0x802B5EF4, 0x802ade88, 0, 0), 0x38600001);
 #endif
 
-#if defined(SME_DEBUG) && !defined(SME_RELEASE)
+#if defined(SME_RELEASE)
 // Level Select
 SME_WRITE_32(SME_PORT_REGION(0x802A6788, 0x8029e6e0, 0, 0), 0x3BC00009);
 #endif
@@ -523,7 +523,7 @@ SME_WRITE_32(SME_PORT_REGION(0x80297A64, 0x8028f8fc, 0, 0), 0x4800000C);
 
 // PAL only patch to use fallback message loading
 #ifdef PAL
-// SME_WRITE_32(0x801495c8, 0x3860000a);
+SME_WRITE_32(0x801495c8, 0x3860000a);
 #endif
 
 

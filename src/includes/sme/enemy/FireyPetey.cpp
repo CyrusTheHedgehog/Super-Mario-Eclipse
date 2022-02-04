@@ -130,8 +130,22 @@ bool TNerveFPFly::execute(TSpineBase<TLiveActor> *spine) const
 {
   if (spine->mStateTimer % 100 == 99)
   {
-    TBossPakkun *target = reinterpret_cast<TBossPakkun *>(spine->mTarget);
-    target->launchPolDrop();
+    TFireyPetey *target = reinterpret_cast<TFireyPetey *>(spine->mTarget);
+    // // target->launchPolDrop();
+    // TWaterBalloon *sWaterBalloon = target->sWaterBalloon;
+
+    // if (!sWaterBalloon)
+    // {
+    //   sWaterBalloon = new TWaterBalloon("waterballoon");
+    //   sWaterBalloon->initAndRegister("waterballoon");
+    // }
+    // else
+    // {
+    //   sWaterBalloon->kill();
+    // }
+
+    // sWaterBalloon->mPosition.set(target->mPosition);
+    // sWaterBalloon->appear();
   }
   SME_LOG("0x%08x\n", spine->mStateTimer);
   return TNerveBPFly::execute(spine);
@@ -139,11 +153,21 @@ bool TNerveFPFly::execute(TSpineBase<TLiveActor> *spine) const
 
 bool TNerveFPTakeOff::execute(TSpineBase<TLiveActor> *spine) const
 {
-  TBossPakkun *target = reinterpret_cast<TBossPakkun *>(spine->mTarget);
+  TFireyPetey *target = reinterpret_cast<TFireyPetey *>(spine->mTarget);
   JGeometry::TVec3<f32> mPosition;
   if (spine->mStateTimer % 100 == 99)
   {
-    target->launchPolDrop();
+    // target->launchPolDrop();
+    // target->launchPolDrop();
+
+
+
+    TKukkuBall *mKukkuBall = target->mKukkuBall;
+    JGeometry::TVec3<f32> step(0.000f, 1.000f, 0.000f);
+    mKukkuBall->mPosition.set(target->mPosition);
+    mKukkuBall->mVelocity.set(step);
+    mKukkuBall->mObjectType = mKukkuBall->mObjectType & 0xfffffffe;
+    mKukkuBall->unk1 = mKukkuBall->unk1 & 0xfffffffe;
   }
 
   // if (checkCurBckFromIndex__6MActorFi(target->mActorData,0xb))
@@ -225,8 +249,24 @@ void TFireyPetey::init(TLiveManager *param1)
   instance$3889 = *(int *)&fly;
   init$3891 = true;
 
-  instance$3625 = *(int*)&wait;
+  instance$3625 = *(int *)&wait;
   init$3627 = true;
+
+
+  mKukkuBall = new TKukkuBall("lavaDrop\n");
+  mKukkuBall->mActorData = mMActorKeeper->createMActor("pollut_ball.bmd", 3);
+  mKukkuBall->init();
+  SME_LOG("initiallizing LavaDrops\n");
+  SME_LOG("Object at 0x%08x\n", &mKukkuBall);
+}
+
+void TFireyPetey::perform(u32 flags, JDrama::TGraphics *graphics)
+{
+  TBossPakkun::perform(flags, graphics);
+  if (mKukkuBall != nullptr)
+  {
+    mKukkuBall->perform(flags, graphics);
+  }
 }
 
 bool TFireyPetey::receiveMessage(THitActor *reciever, u32 param2)
@@ -243,8 +283,7 @@ bool TFireyPetey::receiveMessage(THitActor *reciever, u32 param2)
 }
 
 // Because Screw hardcoded behaviours
-SME_WRITE_32(SME_PORT_REGION(0x80095c54,0x8008f2f4,0x0,0x0), 0x60000000);
-
+SME_WRITE_32(SME_PORT_REGION(0x80095c54, 0x8008f2f4, 0x0, 0x0), 0x60000000);
 
 TFireyPetey::~TFireyPetey()
 {

@@ -45,7 +45,7 @@ void patchWaterDownWarp(f32 y) {
   else
     player->mPosition.y = y;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80272710, 0, 0, 0), patchWaterDownWarp);
+SME_PATCH_BL(SME_PORT_REGION(0x80272710, 0x8026a49c, 0, 0), patchWaterDownWarp);
 
 static bool canDiePlane(f32 floorY) {
   TMario *player;
@@ -310,7 +310,7 @@ static void captureTextboxDrawMtx(Mtx44 mtx, u8 index) {
   PSMTXCopy(mtx, sDrawMtx);
   GXLoadPosMtxImm(mtx, index);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802d0bf8, 0, 0, 0), captureTextboxDrawMtx);
+SME_PATCH_BL(SME_PORT_REGION(0x802d0bf8, 0x802c8da0, 0, 0), captureTextboxDrawMtx);
 
 static void maybePrintChar(JUTFont *font, f32 x, f32 y, f32 w, f32 h, int ascii,
                            bool unk_1) {
@@ -324,7 +324,7 @@ static void maybePrintChar(JUTFont *font, f32 x, f32 y, f32 w, f32 h, int ascii,
   if (absX + fontWidth > -offset && absX < SME::TGlobals::getScreenWidth())
     font->drawChar_scale(x, y, w, h, ascii, unk_1);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x802cec2c, 0, 0, 0), maybePrintChar);
+SME_PATCH_BL(SME_PORT_REGION(0x802cec2c, 0x802c6dd4, 0, 0), maybePrintChar);
 
 static OSStopwatch stopwatch;
 static bool sInitialized = false;
@@ -357,7 +357,7 @@ static void J2D_BenchMarkPrint(J2DTextBox *printer, int x, int y) {
 SME_WRITE_32(SME_PORT_REGION(0x8016D53C, 0x801628ac, 0, 0), 0x48000344);
 
 // Load msound.aaf from AudioRes folder (NTSC-U) [Xayrga/JoshuaMK]
-SME_WRITE_32(SME_PORT_REGION(0x80014F9C, 0, 0, 0), 0x60000000);
+// SME_WRITE_32(SME_PORT_REGION(0x80014F9C, 0x80014ff8, 0, 0), 0x60000000);
 
 static bool sIs100ShineSpawned = false;
 static bool is100CoinShine(TFlagManager *manager, u32 id) {
@@ -367,8 +367,8 @@ static bool is100CoinShine(TFlagManager *manager, u32 id) {
   }
   return false;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x801BED3C, 0, 0, 0), is100CoinShine);
-SME_WRITE_32(SME_PORT_REGION(0x801BED40, 0, 0, 0), 0x2C030001);
+SME_PATCH_BL(SME_PORT_REGION(0x801BED3C, 0x801b6bf4, 0, 0), is100CoinShine);
+SME_WRITE_32(SME_PORT_REGION(0x801BED40, 0x801b6bf8, 0, 0), 0x2C030001);
 
 static void *loadFromGlobalAndScene(const char *mdl, u32 unk_0,
                                     const char *path) {
@@ -382,7 +382,7 @@ static void *loadFromGlobalAndScene(const char *mdl, u32 unk_0,
   }
   return sdlModel;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8021CD34, 0, 0, 0), loadFromGlobalAndScene);
+SME_PATCH_BL(SME_PORT_REGION(0x8021CD34, 0x80214c88, 0, 0), loadFromGlobalAndScene);
 
 void checkInstantReset_NormalLift(u32 *railflags) {
   s16 *mRailObj;
@@ -404,9 +404,9 @@ void checkInstantReset_RailObj(s16 *mRailObj, u32 *railflags) {
     mRailObj[0x14A / 2] = 180;
   }
 }
-SME_PATCH_BL(SME_PORT_REGION(0x801F0B90, 0, 0, 0),
+SME_PATCH_BL(SME_PORT_REGION(0x801F0B90, 0x801e8a68, 0, 0),
              checkInstantReset_NormalLift);
-SME_PATCH_BL(SME_PORT_REGION(0x801F1054, 0, 0, 0), checkInstantReset_RailObj);
+SME_PATCH_BL(SME_PORT_REGION(0x801F1054, 0x801e8f2c, 0, 0), checkInstantReset_RailObj);
 
 void checkResetToNode(TNormalLift *lift) {
   TGraphWeb *graph = lift->mGraphTracer->mGraph;
@@ -431,14 +431,14 @@ void checkResetToNode(TNormalLift *lift) {
     lift->resetPosition();
   }
 }
-SME_PATCH_BL(SME_PORT_REGION(0x801EFBDC, 0, 0, 0), checkResetToNode);
-SME_WRITE_32(SME_PORT_REGION(0x801EFBE0, 0, 0, 0), 0x60000000);
-SME_WRITE_32(SME_PORT_REGION(0x801EFBE4, 0, 0, 0), 0x60000000);
-SME_WRITE_32(SME_PORT_REGION(0x801EFBE8, 0, 0, 0), 0x60000000);
-SME_PATCH_BL(SME_PORT_REGION(0x801F13FC, 0, 0, 0), checkResetToNode);
-SME_WRITE_32(SME_PORT_REGION(0x801F1400, 0, 0, 0), 0x60000000);
-SME_WRITE_32(SME_PORT_REGION(0x801F1404, 0, 0, 0), 0x60000000);
-SME_WRITE_32(SME_PORT_REGION(0x801F1408, 0, 0, 0), 0x60000000);
+SME_PATCH_BL(SME_PORT_REGION(0x801EFBDC, 0x801e7ab4, 0, 0), checkResetToNode);
+SME_WRITE_32(SME_PORT_REGION(0x801EFBE0, 0x801e7ab8, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801EFBE4, 0x801e7abc, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801EFBE8, 0x801e7ac0, 0, 0), 0x60000000);
+SME_PATCH_BL(SME_PORT_REGION(0x801F13FC, 0x801e92d4, 0, 0), checkResetToNode);
+SME_WRITE_32(SME_PORT_REGION(0x801F1400, 0x801e92d8, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801F1404, 0x801e92dc, 0, 0), 0x60000000);
+SME_WRITE_32(SME_PORT_REGION(0x801F1408, 0x801e92e0, 0, 0), 0x60000000);
 
 f32 enhanceWaterCheck(f32 x, f32 y, f32 z, TMario *player) {
   SME_FROM_GPR(29, player);
@@ -455,7 +455,7 @@ f32 enhanceWaterCheck(f32 x, f32 y, f32 z, TMario *player) {
 
   return mapCol->checkGround(x, y, z, 0, tri);
 }
-SME_PATCH_BL(SME_PORT_REGION(0x8024F12C, 0, 0, 0), enhanceWaterCheck);
+SME_PATCH_BL(SME_PORT_REGION(0x8024F12C, 0x80246eb8, 0, 0), enhanceWaterCheck);
 
 u32 clampRotation(TLiveActor *actor) {
   JGeometry::TVec3<f32> &rot = actor->mRotation;
@@ -474,8 +474,8 @@ u32 clampRotation(TLiveActor *actor) {
 
   return actor->mStateFlags.asU32;
 }
-SME_PATCH_BL(SME_PORT_REGION(0x80217EDC, 0, 0, 0), clampRotation);
-SME_WRITE_32(SME_PORT_REGION(0x80217EE0, 0, 0, 0), 0x70600201);
+SME_PATCH_BL(SME_PORT_REGION(0x80217EDC, 0x8020fdc4, 0, 0), clampRotation);
+SME_WRITE_32(SME_PORT_REGION(0x80217EE0, 0x8020fdc8, 0, 0), 0x70600201);
 
 
 // STATIC RESETTER
