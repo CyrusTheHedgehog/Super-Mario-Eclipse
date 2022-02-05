@@ -146,8 +146,17 @@ bool TNerveFPFly::execute(TSpineBase<TLiveActor> *spine) const
 
     // sWaterBalloon->mPosition.set(target->mPosition);
     // sWaterBalloon->appear();
+    
+    TKukkuBall *mKukkuBall = target->mKukkuBall;
+    JGeometry::TVec3<f32> step(0.000f, 1.000f, 0.000f);
+    mKukkuBall->mPosition.set(target->mPosition);
+    mKukkuBall->mVelocity.set(step);
+    mKukkuBall->mObjectType = mKukkuBall->mObjectType & 0xfffffffe;
+    mKukkuBall->unk1 = mKukkuBall->unk1 & 0xfffffffe;
+    SME_LOG("Dropping\n");
+
   }
-  SME_LOG("0x%08x\n", spine->mStateTimer);
+  // SME_LOG("0x%08x\n", spine->mStateTimer);
   return TNerveBPFly::execute(spine);
 }
 
